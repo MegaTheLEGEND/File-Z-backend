@@ -1,7 +1,7 @@
    
 var online = "true"
 
-let lines = [
+lines = [
       "Welcome to the Terminal!",
       "",
       "Running command: boot File-Z",
