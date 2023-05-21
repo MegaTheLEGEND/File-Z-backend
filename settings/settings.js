@@ -28,6 +28,7 @@
     document.getElementById('tab-icon').value = '';
     document.title = 'SETTINGS'; // Reset the document title
     setDocumentIcon('images/Z.jpg'); // Reset the document icon
+    localStorage.removeItem('tabSettings');
   }
 
   // Event listener for Save button
