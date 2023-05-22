@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<script>
+var online = false;
+var lines;
+</script>
+<head>
+  <title>Booting File-Z</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: "Courier New", monospace;
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 20px;
+    }
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <pre id="terminal"></pre>
+  <script src="https://raw.githack.com/MegaTheLEGEND/File-Z-backend/main/boot.js"></script>
+  <script>
+
+
+    if (online === false) {
+      lines = [
+			"    █████▒ ██▓ ██▓    ▓█████ ▒███████▒",
+			"  ▓██   ▒ ▓██▒▓██▒    ▓█   ▀ ▒ ▒ ▒ ▄▀░",
+			"  ▒████ ░ ▒██▒▒██░    ▒███   ░ ▒ ▄▀▒░",
+			"  ░▓█▒  ░ ░██░▒██░    ▒▓█  ▄   ▄▀▒   ░",
+			"  ░▒█░    ░██░░██████▒░▒████▒▒███████▒",
+			"   ▒ ░    ░▓  ░ ▒░▓  ░░░ ▒░ ░░▒▒ ▓░▒░▒",
+			"   ░       ▒ ░░ ░ ▒  ░ ░ ░  ░░░▒ ▒ ░ ▒",
+			"   ░ ░     ▒ ░  ░ ░      ░   ░ ░ ░ ░ ░",
+			"           ░      ░  ░   ░  ░  ░ ░    ",
+			"                             ░        ",
+			"",
+			"Welcome to the Terminal!",
+			"",
+			"Running command: boot File-Z",
+			"Booting...",
+			"Booting completed.",
+			"",
+			"Running command: start Application-Z",
+			"Starting Application-Z...",
+			"Application-Z started successfully.",
+			"",
+			"Running command: runScript script-Z",
+			"Executing script-Z...",
+			"Script-Z execution completed.",
+			"",
+			"Running command: exit",
+			"Exiting Terminal..."
+      ];
+    }
+
+    function typeWriter(lines, delay) {
+      let terminal = document.getElementById("terminal");
+      let index = 0;
+      let currentLine = 0;
+
+      function addChar() {
+        if (index < lines[currentLine].length) {
+          terminal.innerHTML += lines[currentLine][index];
+          index++;
+        } else {
+          terminal.innerHTML += "\n";
+          currentLine++;
+          index = 0;
+        }
+
+        if (currentLine < lines.length) {
+          setTimeout(addChar, delay);
+        } else {
+          //window.location.replace("File-Z-master/index.html");
+        }
+      }
+
+      addChar();
+    }
+
+    if (lines) {
+      typeWriter(lines, 10);
+    }
+  </script>
+</body>
+</html>
