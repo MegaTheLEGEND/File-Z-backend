@@ -19,7 +19,7 @@ function displayInfo() {
   };
 
   // Make a GET request to fetch the info.html file
-  xhr.open("GET", "https://rawcdn.githack.com/MegaTheLEGEND/File-Z-backend/8386748cb3aa11f1a104f67c97e2b732aa8d7b8a/about/info.html");
+  xhr.open("GET", "https://raw.githack.com/MegaTheLEGEND/File-Z-backend/main/about/info.html");
   xhr.send();
 }
 
