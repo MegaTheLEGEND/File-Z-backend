@@ -5,5 +5,5 @@ xhttp.onreadystatechange = function() {
        document.getElementById("glist").innerHTML = xhttp.responseText;
     }
 };
-xhttp.open("GET", "https://raw.githack.com/MegaTheLEGEND/File-Z-backend/main/gs/list/list.html", true);
+xhttp.open("GET", "https://megathelegend.github.io/File-Z-backend/gs/list/list.html", true);
 xhttp.send();
