@@ -5,7 +5,7 @@ function randomExecution() {
   const randomNumber = Math.random();
 
   // Check if the random number is less than or equal to 0.1 (10% chance)
-  if (randomNumber <= 10) {
+  if (randomNumber <= 0.1) {
 	var speed = 5
 	var wait = 3000
 	var place = "File-Z-master/index.html"
