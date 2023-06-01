@@ -16,3 +16,4 @@ element.style.width = '75%';
 var container = document.getElementById('stuff');
 container.appendChild(element);
 
+<script type="text/javascript" src="//counter.websiteout.net/js/2/0/0/0"></script>
