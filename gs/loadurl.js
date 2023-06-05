@@ -5,7 +5,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const url = urlParams.get('url');
 const source = urlParams.get('baseurl');
-let home = null;
+var home = undefined;
 window.addEventListener("load", (event) => {
   if (source == 1){
      home = "megathelegend.github.io";
