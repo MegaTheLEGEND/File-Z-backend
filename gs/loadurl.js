@@ -27,6 +27,6 @@ alert("https://megathelegend.github.io/"+ url)
 xhr.send();
 
 
-document.head.innerHTML = "<base id="baseElement" href='https://megathelegend.github.io'+url' >" + document.head.innerHTML;
+xhr.responseText.head.innerHTML = "<base id="baseElement" href='https://megathelegend.github.io'+url' >" + document.head.innerHTML;
 
 
