@@ -31,7 +31,7 @@ xhr.onload = function() {
 
 // Open the request
 xhr.open('GET', "https://"+ source + url, true);
-
+alert("https://"+ source + url)
 // Send the request
 xhr.send();
 
