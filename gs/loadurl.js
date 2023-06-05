@@ -7,12 +7,14 @@ const url = urlParams.get('url');
 const source = urlParams.get('baseurl');
 var home = undefined;
 
+function myFunction() {
 if (source == 1){
      source = "megathelegend.github.io";
   } else if (source == 2){
      source = "m-a.github.io"
   }
-
+}
+myFunction();
 
 
 // Create a new XMLHttpRequest object
