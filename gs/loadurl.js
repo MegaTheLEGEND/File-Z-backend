@@ -6,13 +6,13 @@ const urlParams = new URLSearchParams(window.location.search);
 const url = urlParams.get('url');
 const source = urlParams.get('baseurl');
 var home = undefined;
-window.addEventListener("load", (event) => {
-  if (source == 1){
+
+if (source == 1){
      source = "megathelegend.github.io";
   } else if (source == 2){
      source = "m-a.github.io"
   }
-});
+
 
 
 // Create a new XMLHttpRequest object
