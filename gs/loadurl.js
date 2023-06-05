@@ -8,9 +8,9 @@ const source = urlParams.get('baseurl');
 var home = undefined;
 window.addEventListener("load", (event) => {
   if (source == 1){
-     home = "megathelegend.github.io";
+     source = "megathelegend.github.io";
   } else if (source == 2){
-     home = "m-a.github.io"
+     source = "m-a.github.io"
   }
 });
 
@@ -30,8 +30,8 @@ xhr.onload = function() {
 };
 
 // Open the request
-xhr.open('GET', "https://"+ home + url, true);
-alert("https://"+ home + url)
+xhr.open('GET', "https://"+ source + url, true);
+alert("https://"+ source + url)
 // Send the request
 xhr.send();
 
