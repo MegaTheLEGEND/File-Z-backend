@@ -4,6 +4,16 @@
 // Get the URL from the command line arguments or the browser URL params
 const urlParams = new URLSearchParams(window.location.search);
 const url = urlParams.get('url');
+const source = urlParams.get('baseurl');
+
+window.addEventListener("load", (event) => {
+  if (source == 1){
+    var source = "megathelegend.github.io";
+  } else if (source == 2){
+    var source = "m-a.github.io"
+  }
+});
+
 
 // Create a new XMLHttpRequest object
 const xhr = new XMLHttpRequest();
@@ -20,7 +30,8 @@ xhr.onload = function() {
 };
 
 // Open the request
-xhr.open('GET', "https://"+url, true);
+xhr.open('GET', "https://"+ source + url, true);
 
 // Send the request
 xhr.send();
+
