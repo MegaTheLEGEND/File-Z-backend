@@ -5,12 +5,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const url = urlParams.get('url');
 const source = urlParams.get('baseurl');
-
+//let home = null;
 window.addEventListener("load", (event) => {
   if (source == 1){
-    var source = "megathelegend.github.io";
+    var home = "megathelegend.github.io";
   } else if (source == 2){
-    var source = "m-a.github.io"
+    var home = "m-a.github.io"
   }
 });
 
@@ -30,8 +30,8 @@ xhr.onload = function() {
 };
 
 // Open the request
-xhr.open('GET', "https://"+ source + url, true);
-alert("https://"+ source + url)
+xhr.open('GET', "https://"+ home + url, true);
+alert("https://"+ home + url)
 // Send the request
 xhr.send();
 
