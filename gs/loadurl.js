@@ -5,12 +5,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const url = urlParams.get('url');
 const source = urlParams.get('baseurl');
-//let home = null;
+let home = null;
 window.addEventListener("load", (event) => {
   if (source == 1){
-    var home = "megathelegend.github.io";
+     home = "megathelegend.github.io";
   } else if (source == 2){
-    var home = "m-a.github.io"
+     home = "m-a.github.io"
   }
 });
 
