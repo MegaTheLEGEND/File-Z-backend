@@ -20,7 +20,7 @@ xhr.onload = function() {
 };
 
 // Open the request
-xhr.open('GET', url, true);
+xhr.open('GET', "https://megathelegend.github.io/File-Z-backend/"+url, true);
 
 // Send the request
 xhr.send();
