@@ -1,4 +1,3 @@
-<script>
 window.addEventListener("load", (event) => {
 
 	const location = new URL(window.location.href);
@@ -21,5 +20,5 @@ window.addEventListener("load", (event) => {
 		}
 	}
 })();
-    </script>
+
     
