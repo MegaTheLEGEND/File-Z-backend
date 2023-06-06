@@ -9,12 +9,25 @@ const xhr = new XMLHttpRequest();
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 400) {
     // Request successful
+ 
+    
+  switch (location.searchParams.get("type")) {
+		
+		case "js": {
+      var F=new Function (xhr.responseText);
+      return(F());
+			break;
+		}
+    
+    default: {
     document.documentElement.innerHTML = xhr.responseText;
-
-    // Update the base element href
+        // Update the base element href
     const baseElement = document.createElement('base');
     baseElement.setAttribute('href', 'https://megathelegend.github.io/' + url);
     document.head.appendChild(baseElement);
+			break;
+		}
+      
   } else {
     // Request failed
     console.error('Error:', xhr.statusText);
