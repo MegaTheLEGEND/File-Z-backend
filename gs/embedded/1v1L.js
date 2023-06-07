@@ -1,4 +1,4 @@
-window.addEventListener("load", (event) => {
+
 
 	const location = new URL(window.location.href);
 	const url = "https://1v1.lol";
@@ -19,6 +19,3 @@ window.addEventListener("load", (event) => {
 			break;
 		}
 	}
-})();
-
-    
