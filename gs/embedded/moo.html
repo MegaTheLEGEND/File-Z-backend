@@ -1,5 +1,4 @@
-<script>
-window.addEventListener("load", (event) => {
+
 
 	const location = new URL(window.location.href);
 	const url = "https://moomoo.io";
@@ -13,6 +12,7 @@ window.addEventListener("load", (event) => {
 		default: {
 			const frame = document.createElement("embed");
 			frame.type = "text/plain";
+			frame.style.position = 'absolute';
 			frame.width = "100%";
 			frame.height = "100%";
 			frame.src = url;
@@ -20,6 +20,3 @@ window.addEventListener("load", (event) => {
 			break;
 		}
 	}
-})();
-    </script>
-    
