@@ -12,7 +12,7 @@
 		default: {
 			const frame = document.createElement("embed");
 			frame.type = "text/plain";
-			frame.position = 'absolute';
+			frame.style.position = 'absolute';
 			frame.width = "100%";
 			frame.height = "100%";
 			frame.src = url;
