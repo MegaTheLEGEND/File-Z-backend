@@ -13,7 +13,7 @@
 			const frame = document.createElement("embed");
 			frame.type = "text/plain";
 			frame.width = "100%";
-			frame.height = "1300";
+			frame.height = "755";
 			frame.src = url;
 			document.body.appendChild(frame);
 			break;
