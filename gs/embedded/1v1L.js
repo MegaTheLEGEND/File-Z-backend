@@ -12,8 +12,8 @@
 		default: {
 			const frame = document.createElement("embed");
 			frame.type = "text/plain";
-			frame.width = "100%";
-			frame.height = "100%";
+			frame.width = "1024";
+			frame.height = "768";
 			frame.src = url;
 			document.body.appendChild(frame);
 			break;
