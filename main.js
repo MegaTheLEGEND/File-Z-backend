@@ -4,7 +4,6 @@ var newestVersion = "2.2.1"; // this is the newest available version of the offl
 //**********************************************************************************************
 //                           Toast config
 //**********************************************************************************************
-
 function showToast(message, url, color, timeout) {
   // Check if the container element exists, create it if it doesn't
   var container = document.getElementById('toast-container');
@@ -28,6 +27,11 @@ function showToast(message, url, color, timeout) {
   toast.style.cursor = url ? 'pointer' : 'default';
   toast.style.marginBottom = '10px';
   toast.style.wordBreak = 'break-word';
+
+  // Dynamically set the width based on the page width
+  var pageWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  var toastWidth = Math.floor(pageWidth * 0.4); // Adjust the percentage as needed
+  toast.style.width = toastWidth + 'px';
 
   // Attach the onclick event to redirect to the specified URL
   if (url) {
