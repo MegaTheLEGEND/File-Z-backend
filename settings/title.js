@@ -14,6 +14,7 @@ function setDocumentIcon(iconUrl) {
 if (tabSettings) {
   document.title = tabSettings.name; // Set the document title
   setDocumentIcon(tabSettings.icon); // Set the document icon
+  showToast('Tab name and title loaded.', 's.html', 'blue', 4000);
 } else {
   // Set default values as the page's respective title and icon
   const pageTitle = document.title;
@@ -21,5 +22,4 @@ if (tabSettings) {
 
   document.title = pageTitle; // Set the document title
   setDocumentIcon(pageIcon); // Set the document icon
-  showToast('Tab name and title loaded.', 's.html', 'blue', 4000);
 }
