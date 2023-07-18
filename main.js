@@ -1,6 +1,9 @@
 var newestVersion = "2.2.1"; // this is the newest available version of the offline file system
 
 
+//**********************************************************************************************
+//                           Toast config
+//**********************************************************************************************
 
 function showToast(message, url, color, timeout) {
   // Check if the container element exists, create it if it doesn't
@@ -42,3 +45,7 @@ function showToast(message, url, color, timeout) {
     }, 300);
   }, timeout || 5000);
 }
+
+//**********************************************************************************************
+//                           End Toast config
+//**********************************************************************************************
