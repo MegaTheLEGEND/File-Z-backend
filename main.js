@@ -24,8 +24,9 @@ function showToast(message, url, color, timeout) {
   toast.style.color = '#fff';
   toast.style.borderRadius = '8px';
   toast.style.padding = '10px 20px';
-  toast.style.animation = 'slideIn 0.75s ease-in';
+  toast.style.animation = 'slideIn 0.3s ease-in';
   toast.style.cursor = url ? 'pointer' : 'default';
+  toast.style.marginBottom = '10px';
 
   // Attach the onclick event to redirect to the specified URL
   if (url) {
@@ -33,6 +34,18 @@ function showToast(message, url, color, timeout) {
       window.location.href = url;
     };
   }
+
+  // Append the toast element to the container
+  container.appendChild(toast);
+
+  // Set a timeout to remove the toast
+  setTimeout(function() {
+    toast.style.animation = 'slideOut 0.3s ease-in';
+    setTimeout(function() {
+      container.removeChild(toast);
+    }, 300);
+  }, timeout || 5000);
+}
 
   // Append the toast element to the container
   container.appendChild(toast);
