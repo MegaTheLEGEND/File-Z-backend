@@ -21,4 +21,5 @@ if (tabSettings) {
 
   document.title = pageTitle; // Set the document title
   setDocumentIcon(pageIcon); // Set the document icon
+  showToast('Tab name and title loaded.', 's.html', 'blue', 4000);
 }
