@@ -28,9 +28,11 @@ function showToast(message, url, color, timeout) {
   toast.style.marginBottom = '10px';
   toast.style.wordBreak = 'break-word';
 
-  // Dynamically set the width based on the page width
+  // Dynamically set the width based on the page width and text length
   var pageWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-  var toastWidth = Math.floor(pageWidth * 0.4); // Adjust the percentage as needed
+  var toastMaxWidth = Math.floor(pageWidth * 0.4); // Maximum width as 40% of the page width
+  var toastTextWidth = Math.ceil(toast.offsetWidth);
+  var toastWidth = Math.min(toastMaxWidth, toastTextWidth);
   toast.style.width = toastWidth + 'px';
 
   // Attach the onclick event to redirect to the specified URL
