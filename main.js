@@ -47,17 +47,6 @@ function showToast(message, url, color, timeout) {
   }, timeout || 5000);
 }
 
-  // Append the toast element to the container
-  container.appendChild(toast);
-
-  // Set a timeout to remove the toast
-  setTimeout(function() {
-    toast.style.animation = 'slideOut 0.75s ease-in';
-    setTimeout(function() {
-      container.removeChild(toast);
-    }, 300);
-  }, timeout || 5000);
-}
 
 //**********************************************************************************************
 //                           End Toast config
