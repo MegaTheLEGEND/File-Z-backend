@@ -29,6 +29,7 @@
     document.title = 'SETTINGS'; // Reset the document title
     setDocumentIcon('images/Z.jpg'); // Reset the document icon
     localStorage.removeItem('tabSettings');
+   	showToast('Tab name and title reset.', 's.html', 'blue', 3000);   
   }
 
   // Event listener for Save button
@@ -47,5 +48,6 @@
       document.getElementById('tab-icon').value = tabSettings.icon;
       document.title = tabSettings.name; // Set the document title
       setDocumentIcon(tabSettings.icon); // Set the document icon
+      showToast('Tab name and title loaded.', 's.html', 'blue', 3000);   
     }
   }
