@@ -1,4 +1,4 @@
-var newestVersion = "2.2.0"; // this is the newest available version of the offline file system
+var newestVersion = "2.2.1"; // this is the newest available version of the offline file system
 
 
 
