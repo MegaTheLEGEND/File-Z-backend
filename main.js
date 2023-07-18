@@ -27,6 +27,7 @@ function showToast(message, url, color, timeout) {
   toast.style.animation = 'slideIn 0.3s ease-in';
   toast.style.cursor = url ? 'pointer' : 'default';
   toast.style.marginBottom = '10px';
+  toast.style.wordBreak = 'break-word';
 
   // Attach the onclick event to redirect to the specified URL
   if (url) {
