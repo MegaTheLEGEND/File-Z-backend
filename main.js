@@ -51,6 +51,8 @@ function showToast(message, url, color, timeout) {
 //                           End Toast config
 //**********************************************************************************************
 
+
+// used to define and display protocol
 var protocol = window.location.protocol;
 
             if (protocol === 'file:') {
