@@ -58,7 +58,7 @@ var protocol = window.location.protocol;
             if (protocol === 'file:') {
                 showToast('Using file: protocol', '#', 'orange', 3000);
             } else if (protocol === 'https:') {
-                showToast('Using https: protocol', '#', 'orange', 3000);
+                showToast('Using https: protocol. Consider downloading stand alone.', '#', 'orange', 3000);
             } else {
                 showToast('Using unknown protocol', '#', 'orange', 3000);
             }
