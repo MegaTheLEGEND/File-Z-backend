@@ -61,6 +61,7 @@ lines = [
 				"",
 				"Running command: start Application-Z",
 				"Starting Application-Z...",
+				"FileZ is a subsidiary asset of MCI inc.",
 				"Application-Z started successfully.",
 				"",
 				"Running command: runScript script-Z",
