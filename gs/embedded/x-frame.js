@@ -1,7 +1,7 @@
 
 
 	const location = new URL(window.location.href);
-	const url = "https://x-frame-options.megaderp100.repl.co";
+	const url = "https://x-frame-options.megaderp100.repl.co?url=https://discordapp.com";
 
 	if (url.length === 0) {
 		alert("No URL specified");
