@@ -1,7 +1,7 @@
 
 
 	const location = new URL(window.location.href);
-	const url = ";
+	const url = "https://womginxnew.megaderp100.repl.co";
 
 	if (url.length === 0) {
 		alert("No URL specified");
