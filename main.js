@@ -72,14 +72,12 @@ var protocol = window.location.protocol;
 //                          start go-gardian anti-close
 //********************************************************************************************
 
-window.onunload = function() {
-  
-    if (confirm('Save changes?'))
-        document.forms['form1'].submit();
-};
-
-
-
-
-
-
+window.onload = function() {
+ if (antiClose == true){
+   showToast('anti close active! :)', '#', 'pink', 3000);
+       window.onunload = function() {      
+        if (confirm('Save changes?'))
+            document.forms['form1'].submit();
+       };
+ }
+}
