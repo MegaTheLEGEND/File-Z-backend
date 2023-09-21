@@ -52,6 +52,8 @@
       showToast('Tab name and title loaded.', 's.html', 'blue', 4000);   
     }
   }
+
+//this is for changing the backend url but imma not add that rn
 //event listener for new backend url button.
 document.getElementById('backend-set').addEventListener('click', setNewBackend);
 
