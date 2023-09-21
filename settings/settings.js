@@ -52,3 +52,8 @@
       showToast('Tab name and title loaded.', 's.html', 'blue', 4000);   
     }
   }
+
+ function setNewBackend() { 
+      showToast('Custom Backend loaded.', 's.html', 'green', 4000);   
+
+  }
