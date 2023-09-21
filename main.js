@@ -71,20 +71,19 @@ var protocol = window.location.protocol;
 //
 //                          start go-gardian anti-close
 //********************************************************************************************
-var antiClose = true;
+var formSubmitting = true;
+
 window.onload = function() {
     window.addEventListener("beforeunload", function (e) {
         if (formSubmitting) {
             return undefined;
         }
 
-        var confirmationMessage = 'It looks like someone may be trying to close your page. '
-                                + 'please confirm that you want to leave.';
+        var confirmationMessage = 'It looks like you have been editing something. '
+                                + 'If you leave before saving, your changes will be lost.';
         
         (e || window.event).returnValue = confirmationMessage; //Gecko + IE
         return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
     });
 };
 });
- }
-}
