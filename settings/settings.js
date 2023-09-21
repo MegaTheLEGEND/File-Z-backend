@@ -52,8 +52,11 @@
       showToast('Tab name and title loaded.', 's.html', 'blue', 4000);   
     }
   }
+//event listener for new backend url button.
+document.getElementById('backend-set').addEventListener('click', setNewBackend);
 
- function setNewBackend(url) { 
+ function setNewBackend() { 
+      document.getElementById('newBackend').value = url;
       showToast('Custom Backend loaded. === '+url, 's.html', 'green', 4000);   
       localStorage.setItem('backendUrl', url)
   }
