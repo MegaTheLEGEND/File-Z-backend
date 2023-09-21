@@ -74,6 +74,6 @@ var protocol = window.location.protocol;
  var askBeforeUnload=true;
 
   window.onbeforeunload=function(e){
-    if(askBeforeUnload)return'You have unsaved changes. Do you want to leave this page and discard your changes or stay on this page?';
+    if(askBeforeUnload)return'Someone may be attempting to close you window. Please confirm or deny this action.';
   }
 
