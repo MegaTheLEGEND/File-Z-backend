@@ -48,7 +48,9 @@ function showToast(message, url, color, timeout) {
 }
 
 //**********************************************************************************************
-//                           End Toast config
+//                           End Toast config. 
+//                 
+//                           Start protocol thingy
 //**********************************************************************************************
 
 
@@ -62,4 +64,22 @@ var protocol = window.location.protocol;
             } else {
                 showToast('Using unknown protocol', '#', 'orange', 3000);
             }
+
+
+//********************************************************************************************
+//                          end protocol thingy
+//
+//                          start go-gardian anti-close
+//********************************************************************************************
+
+window.onunload = function() {
+  
+    if (confirm('Save changes?'))
+        document.forms['form1'].submit();
+};
+
+
+
+
+
 
