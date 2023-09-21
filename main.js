@@ -71,19 +71,10 @@ var protocol = window.location.protocol;
 //
 //                          start go-gardian anti-close
 //********************************************************************************************
-var formSubmitting = true;
+ var askBeforeUnload=true;
 
-window.onload = function() {
-    window.addEventListener("beforeunload", function (e) {
-        if (formSubmitting) {
-            return undefined;
-        }
 
-        var confirmationMessage = 'It looks like you have been editing something. '
-                                + 'If you leave before saving, your changes will be lost.';
-        
-        (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-        return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
-    });
-};
-});
+  window.onbeforeunload=function(e){
+    if(askBeforeUnload)return'You have unsaved changes. Do you want to leave this page and discard your changes or stay on this page?';
+  }
+
