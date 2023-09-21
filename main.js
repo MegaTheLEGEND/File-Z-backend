@@ -72,6 +72,11 @@ var protocol = window.location.protocol;
 //                          start go-gardian anti-close
 //********************************************************************************************
  var askBeforeUnload=true;
+  window.onload = function() {
+    if (askBeforeUnload) {
+      showToast('Protecting you from teachers closing your tab :)', '#', 'hotpink', 4000);
+    }
+  }
 
   window.onbeforeunload=function(e){
     if(askBeforeUnload)return'Someone may be attempting to close you window. Please confirm or deny this action.';
