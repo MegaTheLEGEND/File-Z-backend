@@ -71,7 +71,7 @@ var protocol = window.location.protocol;
 //
 //                          start go-gardian anti-close
 //********************************************************************************************
-
+var antiClose = true;
 window.onload = function() {
  if (antiClose == true){
    showToast('anti close active! :)', '#', 'pink', 3000);
