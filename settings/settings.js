@@ -53,7 +53,7 @@
     }
   }
 
- function setNewBackend() { 
-      showToast('Custom Backend loaded.', 's.html', 'green', 4000);   
-
+ function setNewBackend(url) { 
+      showToast('Custom Backend loaded. === '+url, 's.html', 'green', 4000);   
+      localStorage.setItem('backendUrl', url)
   }
