@@ -74,7 +74,7 @@ var protocol = window.location.protocol;
  var askBeforeUnload=true;
   window.onload = function() {
     if (askBeforeUnload) {
-      showToast('Protecting you from teachers closing your tab :)', '#', 'hotpink', 4000);
+      showToast('Protecting you from teachers closing your tab :)', '#', 'hotpink', 4500);
     }
   }
 
