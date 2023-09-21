@@ -73,10 +73,18 @@ var protocol = window.location.protocol;
 //********************************************************************************************
 var antiClose = true;
 window.onload = function() {
- if (antiClose == true){
-   showToast('anti close active! :)', '#', 'pink', 3000);
-window.addEventListener("beforeunload", (e) => {
-    e.preventDefault();
+    window.addEventListener("beforeunload", function (e) {
+        if (formSubmitting) {
+            return undefined;
+        }
+
+        var confirmationMessage = 'It looks like someone may be trying to close your page. '
+                                + 'please confirm that you want to leave.';
+        
+        (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+        return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+    });
+};
 });
  }
 }
