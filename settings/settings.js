@@ -62,3 +62,23 @@ document.getElementById('backend-set').addEventListener('click', setNewBackend);
       showToast('Custom Backend loaded. === '+url, 's.html', 'green', 4000);   
       localStorage.setItem('backendUrl', url)
   }
+
+
+// start config for "ask before closing" button
+
+var askOnClose = localStorage.getItem("askOnClose")
+var askOnCloseButton = document.getElementById("askOnClose")
+
+askOnCloseButton.value = askOnClose;
+
+document.getElementById('askOnClose').addEventListener('change', askoncloseSwitchFunction);
+
+function askoncloseSwitchFunction() {
+ localstorage.setItem("askOnClose", document.getElementById('askOnClose').value);
+}
+
+
+
+
+
+
