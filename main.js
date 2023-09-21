@@ -75,9 +75,8 @@ var antiClose = true;
 window.onload = function() {
  if (antiClose == true){
    showToast('anti close active! :)', '#', 'pink', 3000);
-       window.onunload = function() {      
-        if (confirm('Save changes?'))
-            document.forms['form1'].submit();
-       };
+window.addEventListener("beforeunload", (e) => {
+    e.preventDefault();
+});
  }
 }
