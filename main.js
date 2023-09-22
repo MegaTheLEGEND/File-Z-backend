@@ -74,7 +74,7 @@ var protocol = window.location.protocol;
  var askBeforeUnload=localStorage.getItem("askOnCloseLS");
   window.onload = function() {
     if (askBeforeUnload) {
-      showToast('Protecting you from teachers closing your tab :)' + localStorage.getItem("askOnCloseLS"), '#', 'hotpink', 4500);
+      showToast('Protecting you from teachers closing your tab :) ' + localStorage.getItem("askOnCloseLS"), '#', 'hotpink', 4500);
     }
   }
 
