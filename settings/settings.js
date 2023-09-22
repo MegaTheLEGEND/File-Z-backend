@@ -71,7 +71,10 @@ var askOnCloseButton = document.getElementById("askOnClose");
 
 askOnCloseButton.value = askOnClose;
 
-document.getElementById('askOnClose').addEventListener('change', askOnCloseSwitchFunction);
+document.getElementById('askOnClose').addEventListener('change', function() {
+    console.log('Checkbox state changed');
+    askOnCloseSwitchFunction(); // Call your function here
+});
 
 function askOnCloseSwitchFunction() {
     showToast('Settings updated.', '#', 'green', 2000); 
