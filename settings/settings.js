@@ -71,11 +71,20 @@ var askOnCloseButton = document.getElementById("askOnClose");
 askOnCloseButton.checked = askOnClose;
 
 function askFunction() {
-    showToast('Settings updated. ' + document.getElementById('askOnClose').checked, '#', 'green', 2000); 
-    localStorage.setItem("askOnCloseLS", document.getElementById('askOnClose').checked);
+	if(askOnCloseButton.checked) {
+    //alert("checked");
+    showToast('Anti-close enabled', '#', 'green', 2000); 
+    localStorage.setItem("askOnCloseLS", "true");
+
+    }
+    
+    else if(askOnCloseButton.checked == false) {
+    //alert("dischecked");
+    showToast('Anti-close disabled', '#', 'green', 2000); 
+    localStorage.setItem("askOnCloseLS", "false");
+    }
+
 }
-
-
 
 
 
