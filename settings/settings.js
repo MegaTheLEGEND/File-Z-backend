@@ -71,6 +71,7 @@ var askOnCloseButton = document.getElementById("askOnClosebtn");
 //askOnCloseButton.checked = askOnClose;
 
 function askFunction() {
+    alert("funtion did run");
     if(askOnCloseButton.checked) {
     //alert("checked");
     showToast('Anti-close enabled', '#', 'green', 2000); 
