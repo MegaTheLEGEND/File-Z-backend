@@ -71,9 +71,15 @@ var askOnCloseButton = document.getElementById("askOnClose");
 
 askOnCloseButton.value = askOnClose;
 
-document.getElementById('askOnClose').addEventListener('change', function() {
-    console.log('Checkbox state changed');
-    askOnCloseSwitchFunction(); // Call your function here
+document.addEventListener('DOMContentLoaded', function() {
+    var checkbox = document.getElementById('askOnClose');
+    
+    if (checkbox) {
+        checkbox.addEventListener('change', function() {
+            console.log('Checkbox state changed');
+            // Call your function here if needed
+        });
+    }
 });
 
 function askOnCloseSwitchFunction() {
