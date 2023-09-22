@@ -66,15 +66,13 @@ document.getElementById('backend-set').addEventListener('click', setNewBackend);
 
 // start config for "ask before closing" button
 
-var askOnClose = localStorage.getItem("askOnClose");
+var askOnClose = localStorage.getItem("askOnCloseLS");
 var askOnCloseButton = document.getElementById("askOnClose");
+askOnCloseButton.checked = askOnClose;
 
-askOnCloseButton.value = askOnClose;
-
-document.getElementById('askOnClose').addEventListener('change', askFunction);
 function askFunction() {
-    showToast('Settings updated. ' + document.getElementById('askOnClose').value, '#', 'green', 2000); 
-    localStorage.setItem("askOnClose", document.getElementById('askOnClose').value);
+    showToast('Settings updated. ' + document.getElementById('askOnClose').checked, '#', 'green', 2000); 
+    localStorage.setItem("askOnCloseLS", document.getElementById('askOnClose').value);
 }
 
 
