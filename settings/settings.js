@@ -1,3 +1,4 @@
+
  // Function to set the document icon
   function setDocumentIcon(iconUrl) {
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -71,14 +72,12 @@ var askOnCloseButton = document.getElementById("askOnClosebtn");
 //askOnCloseButton.checked = askOnClose;
 
 function askFunction() {
-    alert("funtion did run");
-    if(askOnCloseButton.checked) {
-    //alert("checked");
+    alert("function did run " + askOnCloseButton.checked);
+    if (askOnCloseButton.checked) {
     showToast('Anti-close enabled', '#', 'green', 2000); 
     localStorage.setItem("askOnCloseLS", "true");
     }
-    else if(askOnCloseButton.checked == false) {
-    //alert("dischecked");
+    else if (askOnCloseButton.checked == false) {
     showToast('Anti-close disabled', '#', 'green', 2000); 
     localStorage.setItem("askOnCloseLS", "false");
     }
