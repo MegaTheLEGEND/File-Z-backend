@@ -71,7 +71,7 @@ var protocol = window.location.protocol;
 //
 //                          start go-gardian anti-close
 //********************************************************************************************
- var askBeforeUnload=true;
+ var askBeforeUnload=localStorage.getItem("askOnCloseLS");
   window.onload = function() {
     if (askBeforeUnload) {
       showToast('Protecting you from teachers closing your tab :)', '#', 'hotpink', 4500);
