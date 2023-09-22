@@ -71,11 +71,9 @@ var askOnCloseButton = document.getElementById("askOnClose");
 
 askOnCloseButton.value = askOnClose;
 
-document.getElementById('askOnClose').addEventListener('click', askOnCloseSwitchFunction);
-
-
-function askOnCloseSwitchFunction() {
-    showToast('Settings updated.', '#', 'green', 2000); 
+document.getElementById('askOnClose').addEventListener('change', askFunction);
+function askFunction() {
+    showToast('Settings updated. ' + document.getElementById('askOnClose').value, '#', 'green', 2000); 
     localStorage.setItem("askOnClose", document.getElementById('askOnClose').value);
 }
 
