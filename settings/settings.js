@@ -72,7 +72,7 @@ askOnCloseButton.checked = askOnClose;
 
 function askFunction() {
     showToast('Settings updated. ' + document.getElementById('askOnClose').checked, '#', 'green', 2000); 
-    localStorage.setItem("askOnCloseLS", document.getElementById('askOnClose').value);
+    localStorage.setItem("askOnCloseLS", document.getElementById('askOnClose').checked);
 }
 
 
