@@ -74,6 +74,7 @@ askOnCloseButton.value = askOnClose;
 document.getElementById('askOnClose').addEventListener('change', askOnCloseSwitchFunction);
 
 function askOnCloseSwitchFunction() {
+    showToast('Settings updated.', '#', 'green', 2000); 
     localStorage.setItem("askOnClose", document.getElementById('askOnClose').value);
 }
 
