@@ -67,7 +67,7 @@ document.getElementById('backend-set').addEventListener('click', setNewBackend);
 // start config for "ask before closing" button
 
 var askOnClose = localStorage.getItem("askOnCloseLS");
-var askOnCloseButton = document.getElementById("askOnClose");
+var askOnCloseButton = document.getElementById("askOnClosebtn");
 askOnCloseButton.checked = askOnClose;
 
 function askFunction() {
