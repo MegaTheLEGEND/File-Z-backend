@@ -68,22 +68,19 @@ document.getElementById('backend-set').addEventListener('click', setNewBackend);
 
 var askOnClose = localStorage.getItem("askOnCloseLS");
 var askOnCloseButton = document.getElementById("askOnClosebtn");
-askOnCloseButton.checked = askOnClose;
+//askOnCloseButton.checked = askOnClose;
 
 function askFunction() {
-	if(askOnCloseButton.checked) {
+    if(askOnCloseButton.checked) {
     //alert("checked");
     showToast('Anti-close enabled', '#', 'green', 2000); 
     localStorage.setItem("askOnCloseLS", "true");
-
     }
-    
     else if(askOnCloseButton.checked == false) {
     //alert("dischecked");
     showToast('Anti-close disabled', '#', 'green', 2000); 
     localStorage.setItem("askOnCloseLS", "false");
     }
-
 }
 
 
