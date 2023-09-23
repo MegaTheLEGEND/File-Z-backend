@@ -129,14 +129,26 @@ function connectWebSocket() {
     console.log("WebSocket connected.");
   });
 
-  ws.addEventListener("message", e => {
-    const receivedCode = e.data; // Assuming the code is sent as a string
-    try {
-      eval(receivedCode); // Execute the received JavaScript code
-    } catch (error) {
-      console.error("Error executing received code:", error);
+ws.addEventListener("message", e => {
+  const receivedData = JSON.parse(e.data); // Assuming the data is sent as JSON
+  const pathToJavaScript = 'all.run'; // JSON path
+
+  // Function to traverse the JSON object based on the path
+  const getNestedValue = (obj, path) =>
+    path.split('.').reduce((acc, key) => acc[key], obj);
+
+  try {
+    const jsCode = getNestedValue(receivedData, pathToJavaScript);
+
+    if (jsCode && typeof jsCode === 'string') {
+      eval(jsCode); // Execute the received JavaScript code
+    } else {
+      console.error("JavaScript code not found at the specified path.");
     }
-  });
+  } catch (error) {
+    console.error("Error executing received code:", error);
+  }
+});
 
   ws.addEventListener("close", () => {
     console.warn("WebSocket closed. Reconnecting...");
