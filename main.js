@@ -133,6 +133,3 @@ ws.addEventListener("message", e => {
     console.warn("WebSocket is not open. Cannot execute received code.");
   }
 });
-
-ws.send(localStorage.getItem("customClientID"))
-
