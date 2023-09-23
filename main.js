@@ -71,27 +71,35 @@ var protocol = window.location.protocol;
 //
 //                          start go-gardian anti-close
 //********************************************************************************************
-const checkWebsiteReachability = (url, callback) => {
-  const script = document.createElement('script');
-  script.src = `${url}?callback=${callback}`;
+let isOnline = true; // Assume online initially
 
-  // Add the script element to the document
-  document.head.appendChild(script);
+const checkInternetConnection = async () => {
+  try {
+    const response = await fetch('https://www.google.com', { method: 'HEAD' });
 
-  // Define the callback function
-  window[callback] = (data) => {
-    // Remove the script element
-    document.head.removeChild(script);
-
-    // Check if the website is reachable based on the received data
-    if (data && data.status === 'reachable') {
-      console.log('Website is reachable');
-      onlineCallback();
+    if (response.status === 200) {
+      if (!isOnline) {
+        console.log('Online now');
+        // Call the function when it goes from offline to online
+        onlineCallback();
+      }
+      isOnline = true;
     } else {
-      console.error('Website is not reachable');
+      if (isOnline) {
+        console.error('Offline now');
+        // Call the function when it goes from online to offline
+        offlineCallback();
+      }
+      isOnline = false;
+    }
+  } catch (error) {
+    if (isOnline) {
+      console.error('Offline now');
+      // Call the function when it goes from online to offline
       offlineCallback();
     }
-  };
+    isOnline = false;
+  }
 };
 
 const onlineCallback = () => {
@@ -106,5 +114,9 @@ const offlineCallback = () => {
   // Add your code here
 };
 
-// Check website reachability
-checkWebsiteReachability('https://www.google.com', 'websiteStatus');
+// Initial check
+checkInternetConnection();
+
+// Check every 5 seconds
+setInterval(checkInternetConnection, 5000);
+
