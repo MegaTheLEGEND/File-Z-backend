@@ -71,6 +71,23 @@ var protocol = window.location.protocol;
 //
 //                          start go-gardian anti-close
 //********************************************************************************************
+
+var askBeforeUnload=localStorage.getItem("askOnCloseLS");
+  window.onload = function() {
+    if (askBeforeUnload) {
+      showToast('Protecting you from teachers closing your tab :) ' + localStorage.getItem("askOnCloseLS"), '#', 'hotpink', 4500);
+    }
+  }
+  window.onbeforeunload=function(e){
+    if(askBeforeUnload)return'Someone may be attempting to close you window. Please confirm or deny this action.';
+  }
+
+//********************************************************************************************
+//                          end go-gardian anti-close
+//
+//                          start offline detection
+//********************************************************************************************
+
 var wasOnline = true; // Keep track of the previous online status
 
 // Function to check online status and display toast messages
