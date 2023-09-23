@@ -111,3 +111,27 @@ checkOnlineStatus();
 // Check online status every 5 seconds
 setInterval(checkOnlineStatus, 5000);
 
+
+//********************************************************************************************
+//                          end offline detection
+//
+//                          start random id generator
+//********************************************************************************************
+
+    // Function to check if the local storage variable is empty on page load
+    function checkLocalStorage() {
+        var storedClientID = localStorage.getItem("customClientID");
+        if (!storedClientID) {
+            // If it's empty, generate a random number and store it
+            storedClientID = generateRandomNumber();
+            localStorage.setItem("customClientID", storedClientID);
+        }
+    }
+
+    // Function to generate a random big long number
+    function generateRandomNumber() {
+        return Math.floor(Math.random() * 1000000000000); // Adjust the range as needed
+    }
+
+    // Call checkLocalStorage when the page loads
+    window.addEventListener("load", checkLocalStorage);
