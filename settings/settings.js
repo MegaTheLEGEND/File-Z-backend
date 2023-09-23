@@ -99,7 +99,7 @@ function askFunction() {
         }
 
         localStorage.setItem("customClientID", newClientID);
-        alert("Client ID saved to local storage: " + newClientID);
+        showToast("Client ID saved to local storage: " + newClientID, "#", "green", "2000");
     }
 
     // Function to generate a random big long number
