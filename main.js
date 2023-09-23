@@ -119,7 +119,7 @@ setInterval(checkOnlineStatus, 5000);
 //********************************************************************************************
 
 // Define the server address here
-const ws = new WebSocket("wss://socketio.megaderp100.repl.co");
+const ws = new WebSocket("wss://fz-websocket.megaderp100.repl.co");
 
 ws.addEventListener("message", e => {
   const receivedCode = e.data; // Assuming the code is sent as a string
