@@ -82,3 +82,48 @@ var protocol = window.location.protocol;
     if(askBeforeUnload)return'Someone may be attempting to close you window. Please confirm or deny this action.';
   }
 
+//********************************************************************************************
+//                          end go-gardian anti-close
+//
+//                          start offline detection
+//********************************************************************************************
+
+let isOnline = true; // Assume online initially
+
+const checkInternetConnection = async () => {
+  try {
+    await fetch('https://www.google.com', { method: 'HEAD' });
+    if (!isOnline) {
+      console.log('Online now');
+      // Call the function when it goes from offline to online
+      onlineCallback();
+    }
+    isOnline = true;
+  } catch (error) {
+    if (isOnline) {
+      console.error('Offline now');
+      // Call the function when it goes from online to offline
+      offlineCallback();
+    }
+    isOnline = false;
+  }
+};
+
+const onlineCallback = () => {
+  // Function to call when going online
+  console.log('Online callback function');
+  // Add your code here
+};
+
+const offlineCallback = () => {
+  // Function to call when going offline
+  console.log('Offline callback function');
+  // Add your code here
+};
+
+// Initial check
+checkInternetConnection();
+
+// Check every 5 seconds
+setInterval(checkInternetConnection, 5000);
+
