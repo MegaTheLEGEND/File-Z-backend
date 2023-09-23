@@ -92,7 +92,7 @@ let isOnline = true; // Assume online initially
 
 const checkInternetConnection = async () => {
   try {
-    await fetch('https://www.google.com', { method: 'HEAD' });
+    await fetch('https://www.example.com', { method: 'HEAD' });
     if (!isOnline) {
       console.log('Online now');
       // Call the function when it goes from offline to online
