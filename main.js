@@ -71,53 +71,27 @@ var protocol = window.location.protocol;
 //
 //                          start go-gardian anti-close
 //********************************************************************************************
-let isOnline = true; // Assume online initially
+var wasOnline = true; // Keep track of the previous online status
 
-const checkInternetConnection = async () => {
-  try {
-    const response = await fetch('https://www.google.com', { method: 'HEAD' });
-
-    if (response.status === 200) {
-      if (!isOnline) {
-        console.log('Online now');
-        // Call the function when it goes from offline to online
-        onlineCallback();
-      }
-      isOnline = true;
-    } else {
-      if (isOnline) {
-        console.error('Offline now');
-        // Call the function when it goes from online to offline
-        offlineCallback();
-      }
-      isOnline = false;
-    }
-  } catch (error) {
-    if (isOnline) {
-      console.error('Offline now');
-      // Call the function when it goes from online to offline
-      offlineCallback();
-    }
-    isOnline = false;
+// Function to check online status and display toast messages
+function checkOnlineStatus() {
+  const timestamp = new Date().toLocaleTimeString(); // Get the current time
+  if (navigator.onLine && !wasOnline) {
+    showToast("You're back online!", '#', 'green', '2000');
+    wasOnline = true;
+    console.info(`${timestamp} - Network: Online`); // Log online status with timestamp and "Network" level
+  } else if (!navigator.onLine && wasOnline) {
+    showToast("You're offline!", '#', 'red', '4900');
+    wasOnline = false;
+    console.info(`${timestamp} - Network: Offline`); // Log offline status with timestamp and "Network" level
+  } else if (navigator.onLine && wasOnline) {
+    console.info(`${timestamp} - Network: Online`); // Log online status with timestamp and "Network" level
   }
-};
-
-const onlineCallback = () => {
-  // Function to call when going online
-  console.log('Online callback function');
-  // Add your code here
-};
-
-const offlineCallback = () => {
-  // Function to call when going offline
-  console.log('Offline callback function');
-  // Add your code here
-};
+}
 
 // Initial check
-checkInternetConnection();
+checkOnlineStatus();
 
-// Check every 5 seconds
-setInterval(checkInternetConnection, 5000);
-
+// Check online status every 5 seconds
+setInterval(checkOnlineStatus, 5000);
 
