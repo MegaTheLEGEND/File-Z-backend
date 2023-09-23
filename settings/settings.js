@@ -71,18 +71,18 @@ document.getElementById('backend-set').addEventListener('click', setNewBackend);
 
 var askOnClose = localStorage.getItem("askOnCloseLS");
 var askOnCloseButton = document.getElementById("askOnClosebtn");
-//askOnCloseButton.checked = askOnClose;
+
+// Update the checkbox based on the value in localStorage
+askOnCloseButton.checked = askOnClose === "true"; // Convert the value to a boolean
 
 function askFunction() {
-    alert("function did run " + askOnCloseButton.checked);
-    if (askOnCloseButton.checked) {
-    showToast('Anti-close enabled', '#', 'green', 2000); 
+  if (askOnCloseButton.checked) {
+    showToast('Anti-close enabled', '#', 'green', 2000);
     localStorage.setItem("askOnCloseLS", "true");
-    }
-    else if (askOnCloseButton.checked == false) {
-    showToast('Anti-close disabled', '#', 'green', 2000); 
+  } else {
+    showToast('Anti-close disabled', '#', 'green', 2000);
     localStorage.setItem("askOnCloseLS", "false");
-    }
+  }
 }
 
 
