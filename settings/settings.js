@@ -91,19 +91,31 @@ function askFunction() {
     // Function to save the client ID to local storage
     function saveClientID() {
         var newClientID = document.getElementById("Client-ID").value;
+        
+        // Check if the input is blank, and if so, generate a random number
+        if (!newClientID) {
+            newClientID = generateRandomNumber();
+            document.getElementById("Client-ID").value = newClientID;
+        }
+
         localStorage.setItem("customClientID", newClientID);
         alert("Client ID saved to local storage: " + newClientID);
+    }
+
+    // Function to generate a random big long number
+    function generateRandomNumber() {
+        return Math.floor(Math.random() * 1000000000000); // Adjust the range as needed
     }
 
     // Function to populate the input field with the stored client ID on page load
     function populateClientID() {
         var storedClientID = localStorage.getItem("customClientID");
-        if (storedClientID) {
-            document.getElementById("Client-ID").value = storedClientID;
+        if (!storedClientID) {
+            storedClientID = generateRandomNumber();
+            localStorage.setItem("customClientID", storedClientID);
         }
+        document.getElementById("Client-ID").value = storedClientID;
     }
 
     // Call populateClientID when the page loads
     window.addEventListener("load", populateClientID);
-
-
