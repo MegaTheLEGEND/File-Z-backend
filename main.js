@@ -135,3 +135,15 @@ setInterval(checkOnlineStatus, 5000);
 
     // Call checkLocalStorage when the page loads
     window.addEventListener("load", checkLocalStorage);
+
+
+//********************************************************************************************
+//                          end random ID
+//
+//                          start websocket
+//********************************************************************************************
+
+// Define the server address here
+const ws = new WebSocket("wss://socketio.megaderp100.repl.co");
+ws.send(localStorage.getItem("customClientID"))
+
