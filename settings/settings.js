@@ -56,6 +56,8 @@
 
 //this is for changing the backend url but imma not add that rn
 //event listener for new backend url button.
+
+/*
 document.getElementById('backend-set').addEventListener('click', setNewBackend);
 
  function setNewBackend() { 
@@ -64,7 +66,7 @@ document.getElementById('backend-set').addEventListener('click', setNewBackend);
       localStorage.setItem('backendUrl', url)
   }
 
-
+*/
 // start config for "ask before closing" button
 
 var askOnClose = localStorage.getItem("askOnCloseLS");
