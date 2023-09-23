@@ -126,8 +126,16 @@ function connectWebSocket() {
   ws = new WebSocket(serverAddress);
 
   ws.addEventListener("open", () => {
-    console.log("WebSocket connected.");
-  });
+  const customClientID = localStorage.getItem("customClientID");
+  const dataToSend = {
+    customClientID: customClientID
+  };
+  
+  const jsonData = JSON.stringify(dataToSend);
+  ws.send(jsonData);
+  console.log("WebSocket connected.");
+});
+
 
 ws.addEventListener("message", e => {
   const receivedData = JSON.parse(e.data); // Assuming the data is sent as JSON
