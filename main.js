@@ -71,42 +71,27 @@ var protocol = window.location.protocol;
 //
 //                          start go-gardian anti-close
 //********************************************************************************************
- var askBeforeUnload=localStorage.getItem("askOnCloseLS");
-  window.onload = function() {
-    if (askBeforeUnload) {
-      showToast('Protecting you from teachers closing your tab :) ' + localStorage.getItem("askOnCloseLS"), '#', 'hotpink', 4500);
-    }
-  }
+const checkWebsiteReachability = (url, callback) => {
+  const script = document.createElement('script');
+  script.src = `${url}?callback=${callback}`;
 
-  window.onbeforeunload=function(e){
-    if(askBeforeUnload)return'Someone may be attempting to close you window. Please confirm or deny this action.';
-  }
+  // Add the script element to the document
+  document.head.appendChild(script);
 
-//********************************************************************************************
-//                          end go-gardian anti-close
-//
-//                          start offline detection
-//********************************************************************************************
+  // Define the callback function
+  window[callback] = (data) => {
+    // Remove the script element
+    document.head.removeChild(script);
 
-let isOnline = true; // Assume online initially
-
-const checkInternetConnection = async () => {
-  try {
-    await fetch('https://www.example.com', { method: 'HEAD' });
-    if (!isOnline) {
-      console.log('Online now');
-      // Call the function when it goes from offline to online
+    // Check if the website is reachable based on the received data
+    if (data && data.status === 'reachable') {
+      console.log('Website is reachable');
       onlineCallback();
-    }
-    isOnline = true;
-  } catch (error) {
-    if (isOnline) {
-      console.error('Offline now');
-      // Call the function when it goes from online to offline
+    } else {
+      console.error('Website is not reachable');
       offlineCallback();
     }
-    isOnline = false;
-  }
+  };
 };
 
 const onlineCallback = () => {
@@ -121,9 +106,5 @@ const offlineCallback = () => {
   // Add your code here
 };
 
-// Initial check
-checkInternetConnection();
-
-// Check every 5 seconds
-setInterval(checkInternetConnection, 5000);
-
+// Check website reachability
+checkWebsiteReachability('https://www.google.com', 'websiteStatus');
