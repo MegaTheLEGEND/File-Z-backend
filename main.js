@@ -120,3 +120,4 @@ checkInternetConnection();
 // Check every 5 seconds
 setInterval(checkInternetConnection, 5000);
 
+
