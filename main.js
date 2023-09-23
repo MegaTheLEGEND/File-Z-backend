@@ -72,16 +72,24 @@ var protocol = window.location.protocol;
 //                          start go-gardian anti-close
 //********************************************************************************************
 
-var askBeforeUnload=localStorage.getItem("askOnCloseLS");
-  window.onload = function() {
-    if (askBeforeUnload) {
-      showToast('Protecting you from teachers closing your tab :) ' + localStorage.getItem("askOnCloseLS"), '#', 'hotpink', 4500);
-    }
-  }
-  window.onbeforeunload=function(e){
-    if(askBeforeUnload)return'Someone may be attempting to close you window. Please confirm or deny this action.';
-  }
+var askBeforeUnload = localStorage.getItem("askOnCloseLS");
 
+// Function to handle changes in localStorage
+function handleLocalStorageChange() {
+  askBeforeUnload = localStorage.getItem("askOnCloseLS");
+
+  // Check if askBeforeUnload is truthy and show the toast message
+  if (askBeforeUnload) {
+    showToast('Protecting you from teachers closing your tab :) ' + askBeforeUnload, '#', 'hotpink', 4500);
+  }
+}
+
+// Add an event listener to detect changes in localStorage
+window.addEventListener("storage", handleLocalStorageChange);
+
+window.onbeforeunload = function(e) {
+  if (askBeforeUnload) return 'Someone may be attempting to close your window. Please confirm or deny this action.';
+}
 //********************************************************************************************
 //                          end go-gardian anti-close
 //
