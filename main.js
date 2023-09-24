@@ -172,3 +172,45 @@ function connectWebSocket() {
 
 connectWebSocket(); // Initial connection attempt
 
+//********************************************************************************************
+//                          end websocket
+//
+//                          start notifications
+//********************************************************************************************
+
+
+// Ask for permission when the page loads
+window.addEventListener('load', function() {
+    if (!window.Notification) {
+        console.log('Browser does not support notifications.');
+    } else {
+        Notification.requestPermission().then(function (permission) {
+            if (permission === 'granted') {
+                console.log('Notification permission granted.');
+            } else if (permission === 'denied') {
+                console.log('Notification permission denied.');
+            } else if (permission === 'default') {
+                console.log('Notification permission dismissed (default).');
+            }
+        }).catch(function (err) {
+            console.error(err);
+        });
+    }
+});
+
+function sendNotification(title, body, icon) {
+    if (!window.Notification) {
+        console.log('Browser does not support notifications.');
+    } else {
+        // check if permission is already granted
+        if (Notification.permission === 'granted') {
+            // show notification here
+            var notify = new Notification(title, {
+                body: body,
+                icon: icon,
+            });
+        } else {
+            console.log('Permission to show notifications has not been granted.');
+        }
+    }
+}
