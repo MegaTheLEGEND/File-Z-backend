@@ -126,48 +126,47 @@ function connectWebSocket() {
   ws = new WebSocket(serverAddress);
 
   ws.addEventListener("open", () => {
-  const customClientID = localStorage.getItem("customClientID");
-  const dataToSend = {
-    customClientID: customClientID
-  };
-  
-  const jsonData = JSON.stringify(dataToSend);
-  ws.send(jsonData);
-  console.log("WebSocket connected.");
-});
+    const customClientID = localStorage.getItem("customClientID");
+    const dataToSend = {
+      customClientID: customClientID,
+    };
 
+    const jsonData = JSON.stringify(dataToSend);
+    ws.send(jsonData);
+    console.log("WebSocket connected.");
+  });
 
-ws.addEventListener("message", e => {
-  const receivedData = JSON.parse(e.data); // Assuming the data is sent as JSON
-  const pathToJavaScript = 'all.run'; // JSON path
+  ws.addEventListener("message", (e) => {
+    try {
+      const receivedData = JSON.parse(e.data); // Assuming the data is sent as JSON
 
-  // Function to traverse the JSON object based on the path
-  const getNestedValue = (obj, path) =>
-    path.split('.').reduce((acc, key) => acc[key], obj);
+      if (receivedData.run && receivedData.run.client && receivedData.run.command) {
+        const clientName = receivedData.run.client;
+        const jsCode = receivedData.run.command;
 
-  try {
-    const jsCode = getNestedValue(receivedData, pathToJavaScript);
-
-    if (jsCode && typeof jsCode === 'string') {
-      eval(jsCode); // Execute the received JavaScript code
-    } else {
-      console.error("JavaScript code not found at the specified path.");
+        if (typeof jsCode === "string") {
+          console.log(`Received command for ${clientName}: ${jsCode}`);
+          // You can add logic here to execute the command for the specified client
+        } else {
+          console.error("Command must be a string.");
+        }
+      } else {
+        console.error("Invalid command format.");
+      }
+    } catch (error) {
+      console.error("Error parsing received data:", error);
     }
-  } catch (error) {
-    console.error("Error executing received code:", error);
-  }
-});
+  });
 
   ws.addEventListener("close", () => {
     console.warn("WebSocket closed. Reconnecting...");
     setTimeout(connectWebSocket, 2000); // Retry connection after 2 seconds
   });
 
-  ws.addEventListener("error", error => {
+  ws.addEventListener("error", (error) => {
     console.error("WebSocket error:", error);
     ws.close(); // Close the WebSocket on error
   });
 }
 
 connectWebSocket(); // Initial connection attempt
-
