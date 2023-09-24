@@ -139,6 +139,7 @@ function connectWebSocket() {
   ws.addEventListener("message", (e) => {
     try {
       const receivedData = JSON.parse(e.data); // Assuming the data is sent as JSON
+      console.log("Received data:", receivedData); // Log received data
 
       if (receivedData.run && receivedData.run.client && receivedData.run.command) {
         const clientName = receivedData.run.client;
