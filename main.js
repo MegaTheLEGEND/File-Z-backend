@@ -130,7 +130,9 @@ function connectWebSocket() {
 const siteVersion = window.localStorage.getItem("siteVersion");
     const dataToSend = {
       customClientID: customClientID,
-version: siteVersion,
+      data:{
+        version: siteVersion,
+      },
     };
 
     const jsonData = JSON.stringify(dataToSend);
