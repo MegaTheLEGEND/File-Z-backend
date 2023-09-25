@@ -156,7 +156,7 @@ const siteVersion = window.localStorage.getItem("siteVersion");
           console.error("Command must be a string.");
         }
       } else if (receivedData.info) {
-        console.log("we got the info!!!")
+        console.log("people activly using File-Z: " + receivedData.info.connectedClients)
       } else {
         console.error("Invalid command format.");
       }
