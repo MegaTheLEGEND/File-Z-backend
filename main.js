@@ -251,3 +251,31 @@ function sendNotification(title, body, icon) {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var isPageVisible = true;  // Initialize as true when the page loads
+
+function handleVisibilityChange() {
+  if (document.hidden || document.webkitHidden) {
+    isPageVisible = false;  // Page is not in focus
+  } else {
+    isPageVisible = true;   // Page is in focus
+  }
+}
+
+// Listen for visibility change events
+document.addEventListener("visibilitychange", handleVisibilityChange, false);
+document.addEventListener("webkitvisibilitychange", handleVisibilityChange, false);
