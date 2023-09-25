@@ -217,6 +217,8 @@ window.addEventListener('load', function() {
     if (!window.Notification) {
         console.log('Browser does not support notifications.');
     } else {
+          if (localStorage.getItem("notifyAllowed") != true){
+            
         Notification.requestPermission().then(function (permission) {
             if (permission === 'granted') {
                 console.log('Notification permission granted.');
@@ -229,6 +231,7 @@ window.addEventListener('load', function() {
         }).catch(function (err) {
             console.error(err);
         });
+      }
     }
 });
 
