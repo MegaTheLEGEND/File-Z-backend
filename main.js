@@ -180,6 +180,8 @@ const siteVersion = window.localStorage.getItem("siteVersion");
 
 
 function useJsonInfo(jsonInfo) {
+  const customClientID = localStorage.getItem("customClientID");
+  const siteVersion = window.localStorage.getItem("siteVersion");
     if (jsonInfo.clients.includes(customClientID + " [" + siteVersion + "]")) {
         localStorage.setItem("customClientID", Math.floor(Math.random() * 90000000 + 10000000).toString() + " [" + siteVersion+ "]");
       window.location.reload();
