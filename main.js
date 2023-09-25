@@ -253,17 +253,11 @@ function sendNotification(title, body, icon) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
+//********************************************************************************************
+//                          end notifications
+//
+//                          start detect active users
+//********************************************************************************************
 
 
 var isPageVisible = true;  // Initialize as true when the page loads
@@ -271,9 +265,21 @@ var isPageVisible = true;  // Initialize as true when the page loads
 function handleVisibilityChange() {
   if (document.hidden || document.webkitHidden) {
     isPageVisible = false;  // Page is not in focus
+    
   } else {
     isPageVisible = true;   // Page is in focus
   }
+  const dataToSend = {
+      customClientID: customClientID,
+      data:{
+        version: siteVersion,
+        notify: notifyMe,
+        pageInFocus: isPageVisible,
+      },
+    };
+
+    const jsonData = JSON.stringify(dataToSend);
+    ws.send(jsonData);
 }
 
 // Listen for visibility change events
