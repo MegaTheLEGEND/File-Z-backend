@@ -192,7 +192,7 @@ function useJsonInfo(jsonInfo) {
         
         // Now, you can check for duplicates in the modified array
         if (jsonInfo.clients.includes(customClientID + " [" + siteVersion + "]")) {
-          showToast("Someone has the same client ID as you!", "#", "red", "5000");  
+          showToast("Someone has the same client ID as you! Click to fix.", "s.html", "red", "5000");  
           //localStorage.setItem("customClientID", "Copy of " + customClientID);
             //window.location.reload();
         }
