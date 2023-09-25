@@ -155,6 +155,8 @@ const siteVersion = window.localStorage.getItem("siteVersion");
         } else {
           console.error("Command must be a string.");
         }
+      } else if (receivedData.info) {
+        console.log("we got the info!!!")
       } else {
         console.error("Invalid command format.");
       }
