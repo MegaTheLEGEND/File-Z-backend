@@ -127,11 +127,13 @@ function connectWebSocket() {
 
   ws.addEventListener("open", () => {
     const customClientID = localStorage.getItem("customClientID");
-const siteVersion = window.localStorage.getItem("siteVersion");
+    const siteVersion = window.localStorage.getItem("siteVersion");
+    const notifyMe localStorage.getItem("notifyAllowed");
     const dataToSend = {
       customClientID: customClientID,
       data:{
         version: siteVersion,
+        notify: notifyMe,
       },
     };
 
@@ -218,6 +220,7 @@ window.addEventListener('load', function() {
         Notification.requestPermission().then(function (permission) {
             if (permission === 'granted') {
                 console.log('Notification permission granted.');
+                localStorage.setItem("notifyAllowed", true);
             } else if (permission === 'denied') {
                 console.log('Notification permission denied.');
             } else if (permission === 'default') {
