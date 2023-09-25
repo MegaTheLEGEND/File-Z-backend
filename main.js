@@ -120,9 +120,6 @@ setInterval(checkOnlineStatus, 5000);
 
 // Define the server address here
 const serverAddress = "wss://fz-websocket.megaderp100.repl.co";
-const customClientID = localStorage.getItem("customClientID");
-const siteVersion = window.localStorage.getItem("siteVersion");
-const notifyMe = localStorage.getItem("notifyAllowed");
 
 let ws;
 
@@ -130,6 +127,10 @@ function connectWebSocket() {
   ws = new WebSocket(serverAddress);
 
   ws.addEventListener("open", () => {
+    const customClientID = localStorage.getItem("customClientID");
+    const siteVersion = window.localStorage.getItem("siteVersion");
+    const notifyMe = localStorage.getItem("notifyAllowed");
+    
     const dataToSend = {
       customClientID: customClientID,
       data:{
@@ -271,10 +272,7 @@ function handleVisibilityChange() {
     isPageVisible = true;   // Page is in focus
   }
   const dataToSend = {
-      customClientID: customClientID,
       data:{
-        version: siteVersion,
-        notify: notifyMe,
         pageInFocus: isPageVisible,
       },
     };
