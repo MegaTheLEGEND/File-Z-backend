@@ -192,8 +192,17 @@ function useJsonInfo(jsonInfo) {
         
         // Now, you can check for duplicates in the modified array
         if (jsonInfo.clients.includes(customClientID + " [" + siteVersion + "]")) {
-            localStorage.setItem("customClientID", "Copy of " + customClientID);
-            window.location.reload();
+            const dataToSend = {
+            customClientID: "Copy of: " customClientID,
+            data:{
+              version: siteVersion,
+              },
+            };
+      
+            const jsonData = JSON.stringify(dataToSend);
+            ws.send(jsonData);
+            //localStorage.setItem("customClientID", "Copy of " + customClientID);
+            //window.location.reload();
         }
     }
 }
