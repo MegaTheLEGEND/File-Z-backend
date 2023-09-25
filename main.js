@@ -180,13 +180,24 @@ const siteVersion = window.localStorage.getItem("siteVersion");
 
 
 function useJsonInfo(jsonInfo) {
-  const customClientID = localStorage.getItem("customClientID");
-  const siteVersion = window.localStorage.getItem("siteVersion");
-    if (jsonInfo.clients.includes(customClientID + " [" + siteVersion + "]")) {
-        localStorage.setItem("customClientID", Math.floor(Math.random() * 90000000 + 10000000).toString() + " [" + siteVersion+ "]");
-      window.location.reload();
+    const customClientID = localStorage.getItem("customClientID");
+    const siteVersion = window.localStorage.getItem("siteVersion");
+
+    // Find the index of the exact match
+    const indexToRemove = jsonInfo.clients.indexOf(customClientID + " [" + siteVersion + "]");
+
+    if (indexToRemove !== -1) {
+        // Remove the exact match from the array
+        jsonInfo.clients.splice(indexToRemove, 1);
+        
+        // Now, you can check for duplicates in the modified array
+        if (jsonInfo.clients.includes(customClientID + " [" + siteVersion + "]")) {
+            localStorage.setItem("customClientID", Math.floor(Math.random() * 90000000 + 10000000).toString() + " [" + siteVersion + "]");
+            window.location.reload();
+        }
     }
 }
+
 
 
 connectWebSocket(); // Initial connection attempt
