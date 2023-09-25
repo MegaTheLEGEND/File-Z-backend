@@ -158,6 +158,7 @@ const siteVersion = window.localStorage.getItem("siteVersion");
       } else if (receivedData.info) {
         const activeFilezUsers = receivedData.info.connectedClients;
         console.log("people activly using File-Z: " + activeFilezUsers);
+        useJsonInfo(receivedData.info);
       } else {
         console.error("Invalid command format.");
       }
@@ -176,6 +177,15 @@ const siteVersion = window.localStorage.getItem("siteVersion");
     ws.close(); // Close the WebSocket on error
   });
 }
+
+
+function useJsonInfo(jsonInfo) {
+    if (jsonInfo.clients.includes(customClientID + " [" + siteVersion + "]")) {
+        localStorage.setItem("customClientID", Math.floor(Math.random() * 90000000 + 10000000).toString() + " [" + siteVersion+ "]");
+      window.location.reload();
+    }
+}
+
 
 connectWebSocket(); // Initial connection attempt
 
