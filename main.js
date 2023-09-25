@@ -128,7 +128,7 @@ function connectWebSocket() {
   ws.addEventListener("open", () => {
     const customClientID = localStorage.getItem("customClientID");
     const siteVersion = window.localStorage.getItem("siteVersion");
-    const notifyMe localStorage.getItem("notifyAllowed");
+    const notifyMe = localStorage.getItem("notifyAllowed");
     const dataToSend = {
       customClientID: customClientID,
       data:{
