@@ -283,4 +283,3 @@ function handleVisibilityChange() {
 
 // Listen for visibility change events
 document.addEventListener("visibilitychange", handleVisibilityChange, false);
-document.addEventListener("webkitvisibilitychange", handleVisibilityChange, false);
