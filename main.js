@@ -120,6 +120,7 @@ setInterval(checkOnlineStatus, 5000);
 
 // Define the server address here
 const serverAddress = "wss://fz-websocket.megaderp100.repl.co";
+
 let ws;
 
 function connectWebSocket() {
@@ -129,6 +130,7 @@ function connectWebSocket() {
     const customClientID = localStorage.getItem("customClientID");
     const siteVersion = window.localStorage.getItem("siteVersion");
     const notifyMe = localStorage.getItem("notifyAllowed");
+    
     const dataToSend = {
       customClientID: customClientID,
       data:{
@@ -217,6 +219,8 @@ window.addEventListener('load', function() {
     if (!window.Notification) {
         console.log('Browser does not support notifications.');
     } else {
+          if (!localStorage.getItem("notifyAllowed")){
+            
         Notification.requestPermission().then(function (permission) {
             if (permission === 'granted') {
                 console.log('Notification permission granted.');
@@ -229,6 +233,7 @@ window.addEventListener('load', function() {
         }).catch(function (err) {
             console.error(err);
         });
+      }
     }
 });
 
@@ -248,3 +253,33 @@ function sendNotification(title, body, icon) {
         }
     }
 }
+
+
+//********************************************************************************************
+//                          end notifications
+//
+//                          start detect active users
+//********************************************************************************************
+
+
+var isPageVisible = true;  // Initialize as true when the page loads
+
+function handleVisibilityChange() {
+  if (document.hidden || document.webkitHidden) {
+    isPageVisible = false;  // Page is not in focus
+    
+  } else {
+    isPageVisible = true;   // Page is in focus
+  }
+  const dataToSend = {
+      data:{
+        pageInFocus: isPageVisible,
+      },
+    };
+
+    const jsonData = JSON.stringify(dataToSend);
+    ws.send(jsonData);
+}
+
+// Listen for visibility change events
+document.addEventListener("visibilitychange", handleVisibilityChange, false);
