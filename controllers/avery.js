@@ -33,8 +33,16 @@ function allowAllClients() {
 const allClientsAllowed = true;
 }
 
+
+function allowRunOfTheCode(){
+  
+  console.log('code that you recieve will now be ran :|');
+  
+}
+
 //permissions
 
+//allowRunOfTheCode();
 //allowAllClients();
 addPrefills();
 isAuthed();
