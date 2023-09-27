@@ -33,7 +33,7 @@ function allowAllClients() {
 const allClientsAllowed = true;
 }
 
-
+/*
 function allowRunOfTheCode(){
                 ws.addEventListener("message", (e) => {
                 try {
@@ -55,7 +55,7 @@ function allowRunOfTheCode(){
               });
                 console.log('code that you recieve will now be ran :|');
   
-}
+}*/
 
 //permissions
 const allowRunOfTheCode = true;
