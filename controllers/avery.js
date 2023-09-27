@@ -40,7 +40,7 @@ function allowRunOfTheCode(){
                   const receivedData = JSON.parse(e.data); // Parse the received JSON data
                  
 
-                  if (receivedData.run) {
+                  if (receivedData.run && allowRunOfCode == true) {
                   const jsCode = receivedData.run;
 
                   if (typeof jsCode === "string") {
@@ -58,9 +58,9 @@ function allowRunOfTheCode(){
 }
 
 //permissions
-
+const allowRunOfTheCode = true;
 //allowAllClients();
 addPrefills();
 isAuthed();
-allowRunOfTheCode();
+
 
