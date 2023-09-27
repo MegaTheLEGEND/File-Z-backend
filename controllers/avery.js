@@ -1,6 +1,3 @@
-function isAuthed() {
-  // Your authentication logic here
-}
 
 function addPrefills() {
   const prefills = document.getElementById("prefills");
@@ -20,4 +17,14 @@ function addPrefills() {
   `;
 }
 
+function allowAllClients() {
+  const clientSelector = document.getElementById("clientSelector");
+//add the option list stuff
+  clientSelector.innerHTML = `
+    <option value="all">All Clients</option>
+  `;
+}
+
+allowAllClients();
 addPrefills();
+isAuthed();
