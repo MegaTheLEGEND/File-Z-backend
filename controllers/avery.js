@@ -1,6 +1,6 @@
 
 function addPrefills() {
-  const prefills = document.getElementById("prefills");
+  const prefills = document.getElementById("Prefills");
 //add the option list stuff
   prefills.innerHTML = `
     <option value="alert('')">Alert</option>
