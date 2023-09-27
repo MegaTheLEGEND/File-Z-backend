@@ -1,4 +1,6 @@
 
+const allClientsAllowed = false;
+
 function addPrefills() {
   const prefills = document.getElementById("Prefills");
   const header = document.getElementById("header");
@@ -26,7 +28,7 @@ function allowAllClients() {
   clientSelector.innerHTML = `
     <option value="all">All Clients</option>
   `;
-const allClientsAllowed = true;
+allClientsAllowed = true;
 }
 
 //permissions
