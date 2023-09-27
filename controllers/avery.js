@@ -28,6 +28,8 @@ function allowAllClients() {
   `;
 }
 
-allowAllClients();
+//permissions
+
+//allowAllClients();
 addPrefills();
 isAuthed();
