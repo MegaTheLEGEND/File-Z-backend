@@ -4,7 +4,7 @@ function isAuthed() {
 
 function addPrefills() {
   const prefills = document.getElementById("prefills");
-
+//add the option list stuff
   prefills.innerHTML = `
     <option value="alert('')">Alert</option>
     <option value='showToast("", "#", "blue", "3000")'>Toast</option>
