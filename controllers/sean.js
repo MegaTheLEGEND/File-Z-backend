@@ -1,5 +1,5 @@
 
-const allClientsAllowed = false;
+let allClientsAllowed = false;
 
 function addPrefills() {
   const prefills = document.getElementById("Prefills");
