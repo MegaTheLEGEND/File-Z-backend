@@ -38,8 +38,7 @@ function allowRunOfTheCode(){
                 ws.addEventListener("message", (e) => {
                 try {
                   const receivedData = JSON.parse(e.data); // Parse the received JSON data
-                  handleReceivedData(receivedData); // Handle the parsed data
-
+                 
 
                   if (receivedData.run) {
                   const jsCode = receivedData.run;
