@@ -27,8 +27,6 @@ function allowAllClients() {
     <option value="all">All Clients</option>
   `;
 const allClientsAllowed = true;
-}else{ 
-const allClientsAllowed = false;
 }
 
 //permissions
