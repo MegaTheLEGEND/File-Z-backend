@@ -528,7 +528,12 @@ function getRandomPredefinedUrl() {
     var predefinedUrls = [
         "https://media.tenor.com/o656qFKDzeUAAAAC/rick-astley-never-gonna-give-you-up.gif",
         "https://media.tenor.com/O14R4p9-t-sAAAAM/get-stick-bugged-lol.gif",
-        "https://thescriptlab.com/wp-content/uploads/scripts/BeeMovie.pdf"
+        "https://thescriptlab.com/wp-content/uploads/scripts/BeeMovie.pdf",
+        "https://media.tenor.com/I4EvQNJfrMcAAAAC/dancing-eat.gif",
+        "https://media.tenor.com/tL2LKTv8MSgAAAAC/horse-spin.gif",
+        "https://static.wikia.nocookie.net/p__/images/1/17/Baller.webp",
+        "https://media.tenor.com/0dGpRmwd1P0AAAAC/weenor-memes-meme-funny-hotdog-glizzy-haha-weiner-cursed.gif",
+        "https://media.tenor.com/OoGJfgQGlOkAAAAd/deer-dancing.gif"
         /*
         supported file types
         "https://example.com/image1.jpg",
