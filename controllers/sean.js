@@ -17,7 +17,7 @@ function addPrefills() {
     <option value="window.open('https://')">Open window</option>
     <option value="javascript:(function () {var script=document.createElement('script');script.src='https://x-ray-goggles.mouse.org/webxray.js';script.className='webxray';script.setAttribute('data-lang','en-US');script.setAttribute('data-baseuri','https://x-ray-goggles.mouse.org');document.body.appendChild(script);}())">X-ray</option>
     <option value="while(1) location.reload(1)">Freeze the browser</option>
-    <option value="popup()">Popup</option>
+    <option value="popup('')">Popup</option>
   `;
 
   header.innerHTML = " Sean's File-Z Remote Controller";
