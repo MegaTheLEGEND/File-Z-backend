@@ -531,7 +531,7 @@ function getRandomPredefinedUrl() {
         "https://thescriptlab.com/wp-content/uploads/scripts/BeeMovie.pdf",
         "https://media.tenor.com/I4EvQNJfrMcAAAAC/dancing-eat.gif",
         "https://media.tenor.com/tL2LKTv8MSgAAAAC/horse-spin.gif",
-        "https://static.wikia.nocookie.net/p__/images/1/17/Baller.webp",
+        "https://i.kym-cdn.com/entries/icons/facebook/000/042/306/rbc.jpg",
         "https://media.tenor.com/0dGpRmwd1P0AAAAC/weenor-memes-meme-funny-hotdog-glizzy-haha-weiner-cursed.gif",
         "https://media.tenor.com/OoGJfgQGlOkAAAAd/deer-dancing.gif"
         /*
