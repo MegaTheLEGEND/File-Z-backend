@@ -552,3 +552,10 @@ function getRandomPredefinedUrl() {
 // Example usages:
 // popup("https://example.com/single-image.jpg"); // Supports a single URL
 // popup(); // Uses a URL from the predefined list if no URL is provided
+
+
+//********************************************************************************************
+//                          end "xp" like popup config
+//
+//                          start audio reciever
+//********************************************************************************************
