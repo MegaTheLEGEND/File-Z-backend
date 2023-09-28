@@ -31,7 +31,7 @@ function allowAllClients() {
   clientSelector.innerHTML = `
     <option value="all">All Clients</option>
   `;
-const allClientsAllowed = true;
+allClientsAllowed = true;
 }
 
 //permissions
