@@ -290,7 +290,6 @@ document.addEventListener("visibilitychange", handleVisibilityChange, false);
 //                          start "xp" like popup config
 //********************************************************************************************
 
-
 function popup(url) {
     // Create a div for the window and set its styles
     var windowDiv = document.createElement("div");
@@ -401,43 +400,106 @@ function popup(url) {
     windowDiv.style.width = windowWidth + "px";
     windowDiv.style.height = windowHeight + "px";
 
-    // Use the provided URL
-    var selectedUrl = url;
+    // Use the provided URL, or if none is provided, select from the predefined list
+    var selectedUrl = url || getRandomPredefinedUrl();
 
-    // Dynamically determine whether to use an iframe or an image element based on the file extension of the selected URL
-    if (selectedUrl.endsWith(".jpg") || selectedUrl.endsWith(".jpeg") || selectedUrl.endsWith(".png") || selectedUrl.endsWith(".gif")) {
-        // Use an image element
-        var img = document.createElement("img");
-        img.src = selectedUrl;
-        img.style.maxWidth = "100%";
-        img.style.maxHeight = "100%";
-        
-        // Create a div for the content and set its styles
-        var contentDiv = document.createElement("div");
-        contentDiv.style.width = "100%";
-        contentDiv.style.height = "100%";
-        contentDiv.style.overflow = "hidden"; // Hide content overflow
-        contentDiv.appendChild(img);
+    // Function to determine the file type based on the URL
+    function getFileType(url) {
+        if (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png") || url.endsWith(".gif")) {
+            return "image";
+        } else if (url.endsWith(".pdf")) {
+            return "pdf";
+        } else if (url.endsWith(".txt")) {
+            return "text";
+        } else {
+            // Assume it's a generic URL
+            return "generic";
+        }
+    }
 
-        // Append the content div to the window div
-        windowDiv.appendChild(contentDiv);
-    } else {
-        // Use an iframe
-        var iframe = document.createElement("iframe");
-        iframe.src = selectedUrl;
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.border = "none";
+    // Determine the file type
+    var fileType = getFileType(selectedUrl);
 
-        // Create a div for the content and set its styles
-        var contentDiv = document.createElement("div");
-        contentDiv.style.width = "100%";
-        contentDiv.style.height = "100%";
-        contentDiv.style.overflow = "hidden"; // Hide content overflow
-        contentDiv.appendChild(iframe);
+    // Dynamically load content based on the file type
+    switch (fileType) {
+        case "image":
+            // Use an image element
+            var img = document.createElement("img");
+            img.src = selectedUrl;
+            img.style.maxWidth = "100%";
+            img.style.maxHeight = "100%";
 
-        // Append the content div to the window div
-        windowDiv.appendChild(contentDiv);
+            // Create a div for the content and set its styles
+            var contentDiv = document.createElement("div");
+            contentDiv.style.width = "100%";
+            contentDiv.style.height = "100%";
+            contentDiv.style.overflow = "hidden"; // Hide content overflow
+            contentDiv.appendChild(img);
+
+            // Append the content div to the window div
+            windowDiv.appendChild(contentDiv);
+
+            break;
+
+        case "pdf":
+            // Use an iframe to display the PDF using PDF.js
+            var iframe = document.createElement("iframe");
+            iframe.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.html?file=" + encodeURIComponent(selectedUrl);
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+
+            // Create a div for the content and set its styles
+            var contentDiv = document.createElement("div");
+            contentDiv.style.width = "100%";
+            contentDiv.style.height = "100%";
+            contentDiv.style.overflow = "auto"; // Allow scrolling for long PDFs
+            contentDiv.appendChild(iframe);
+
+            // Append the content div to the window div
+            windowDiv.appendChild(contentDiv);
+
+            break;
+
+        case "text":
+            // Use an iframe to display text files
+            var iframe = document.createElement("iframe");
+            iframe.src = selectedUrl;
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+
+            // Create a div for the content and set its styles
+            var contentDiv = document.createElement("div");
+            contentDiv.style.width = "100%";
+            contentDiv.style.height = "100%";
+            contentDiv.style.overflow = "auto"; // Allow scrolling for long text files
+            contentDiv.appendChild(iframe);
+
+            // Append the content div to the window div
+            windowDiv.appendChild(contentDiv);
+
+            break;
+
+        default:
+            // For generic URLs, load as iframe
+            var iframe = document.createElement("iframe");
+            iframe.src = selectedUrl;
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+
+            // Create a div for the content and set its styles
+            var contentDiv = document.createElement("div");
+            contentDiv.style.width = "100%";
+            contentDiv.style.height = "100%";
+            contentDiv.style.overflow = "auto"; // Allow scrolling for generic content
+            contentDiv.appendChild(iframe);
+
+            // Append the content div to the window div
+            windowDiv.appendChild(contentDiv);
+
+            break;
     }
 
     // Append the window to the body
@@ -446,3 +508,29 @@ function popup(url) {
     // Make the window draggable
     dragElement(windowDiv);
 }
+
+// Function to get a random URL from the predefined list
+function getRandomPredefinedUrl() {
+    var predefinedUrls = [
+        "https://media.tenor.com/o656qFKDzeUAAAAC/rick-astley-never-gonna-give-you-up.gif",
+        "https://media.tenor.com/O14R4p9-t-sAAAAM/get-stick-bugged-lol.gif",
+        "https://thescriptlab.com/wp-content/uploads/scripts/BeeMovie.pdf"
+        /*
+        supported file types
+        "https://example.com/image1.jpg",
+        "https://example.com/image2.jpg",
+        "https://example.com/page1.html",
+        "https://example.com/page2.html",
+        "https://example.com/document.pdf",
+        "https://example.com/textfile.txt"
+        */
+      
+    ];
+    var randomIndex = Math.floor(Math.random() * predefinedUrls.length);
+    return predefinedUrls[randomIndex];
+}
+
+// Example usages:
+// popup("https://example.com/single-image.jpg"); // Supports a single URL
+// popup(); // Uses a URL from the predefined list if no URL is provided
+
