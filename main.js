@@ -468,22 +468,14 @@ function popup(url) {
             contentDiv.style.height = "100%";
             contentDiv.style.overflow = "auto"; // Allow scrolling for long text files
 
-            // Create an iframe to embed the text content in a new HTML document
-            var iframe = document.createElement("iframe");
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-
-            // Create a new HTML document
-            var doc = iframe.contentDocument || iframe.contentWindow.document;
-
-            // Fetch the text file and insert its content into the new document
+            // Use the Fetch API to retrieve the text content
             fetch(selectedUrl)
                 .then(response => response.text())
                 .then(text => {
-                    // Set the content of the new document's body
-                    doc.body.innerHTML = "<pre>" + text + "</pre>";
-                    contentDiv.appendChild(iframe);
+                    // Create a pre element to display the text content
+                    var pre = document.createElement("pre");
+                    pre.textContent = text;
+                    contentDiv.appendChild(pre);
                 })
                 .catch(error => {
                     console.error("Error fetching text file:", error);
