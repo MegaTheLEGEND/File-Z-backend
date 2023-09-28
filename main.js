@@ -442,19 +442,19 @@ function popup(url) {
             break;
 
         case "pdf":
-            // Use an iframe to display the PDF using PDF.js
-            var iframe = document.createElement("iframe");
-            iframe.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.html?file=" + encodeURIComponent(selectedUrl);
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
+            // Use an <embed> element to display the PDF directly
+            var embed = document.createElement("embed");
+            embed.src = selectedUrl;
+            embed.type = "application/pdf";
+            embed.style.width = "100%";
+            embed.style.height = "100%";
 
             // Create a div for the content and set its styles
             var contentDiv = document.createElement("div");
             contentDiv.style.width = "100%";
             contentDiv.style.height = "100%";
-            contentDiv.style.overflow = "auto"; // Allow scrolling for long PDFs
-            contentDiv.appendChild(iframe);
+            contentDiv.style.overflow = "auto"; // Allow scrolling for PDFs
+            contentDiv.appendChild(embed);
 
             // Append the content div to the window div
             windowDiv.appendChild(contentDiv);
@@ -514,7 +514,8 @@ function getRandomPredefinedUrl() {
     var predefinedUrls = [
         "https://media.tenor.com/o656qFKDzeUAAAAC/rick-astley-never-gonna-give-you-up.gif",
         "https://media.tenor.com/O14R4p9-t-sAAAAM/get-stick-bugged-lol.gif",
-        "https://thescriptlab.com/wp-content/uploads/scripts/BeeMovie.pdf"
+        "https://thescriptlab.com/wp-content/uploads/scripts/BeeMovie.pdf",
+        "https://raw.githubusercontent.com/mxw/grmr/master/src/finaltests/bible.txt"
         /*
         supported file types
         "https://example.com/image1.jpg",
