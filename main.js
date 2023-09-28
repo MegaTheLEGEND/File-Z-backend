@@ -462,19 +462,33 @@ function popup(url) {
             break;
 
         case "text":
-            // Use an iframe to display text files
-            var iframe = document.createElement("iframe");
-            iframe.src = selectedUrl;
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-
             // Create a div for the content and set its styles
             var contentDiv = document.createElement("div");
             contentDiv.style.width = "100%";
             contentDiv.style.height = "100%";
             contentDiv.style.overflow = "auto"; // Allow scrolling for long text files
-            contentDiv.appendChild(iframe);
+
+            // Create an iframe to embed the text content in a new HTML document
+            var iframe = document.createElement("iframe");
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+
+            // Create a new HTML document
+            var doc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Fetch the text file and insert its content into the new document
+            fetch(selectedUrl)
+                .then(response => response.text())
+                .then(text => {
+                    // Set the content of the new document's body
+                    doc.body.innerHTML = "<pre>" + text + "</pre>";
+                    contentDiv.appendChild(iframe);
+                })
+                .catch(error => {
+                    console.error("Error fetching text file:", error);
+                    contentDiv.textContent = "Error loading text content.";
+                });
 
             // Append the content div to the window div
             windowDiv.appendChild(contentDiv);
