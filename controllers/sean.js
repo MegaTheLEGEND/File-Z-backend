@@ -34,6 +34,6 @@ allClientsAllowed = true;
 
 //permissions
 
-allowAllClients();
+//allowAllClients();
 addPrefills();
 isAuthed();
