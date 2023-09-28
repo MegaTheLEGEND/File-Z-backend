@@ -283,3 +283,166 @@ function handleVisibilityChange() {
 
 // Listen for visibility change events
 document.addEventListener("visibilitychange", handleVisibilityChange, false);
+
+//********************************************************************************************
+//                          end detect active users
+//
+//                          start "xp" like popup config
+//********************************************************************************************
+
+
+function popup(url) {
+    // Create a div for the window and set its styles
+    var windowDiv = document.createElement("div");
+    windowDiv.style.position = "absolute";
+    windowDiv.style.backgroundColor = "#008080"; // Teal color
+    windowDiv.style.border = "2px solid #000";
+    windowDiv.style.boxShadow = "5px 5px 5px #888";
+    windowDiv.style.zIndex = "9999";
+    windowDiv.style.overflow = "hidden"; // Hide content overflow
+
+    // Create a title bar for the window and set its styles
+    var titleBar = document.createElement("div");
+    titleBar.style.backgroundColor = "#000";
+    titleBar.style.color = "#fff";
+    titleBar.style.padding = "5px";
+    titleBar.style.cursor = "move";
+    titleBar.style.userSelect = "none";
+    titleBar.textContent = "Advertisement"; // Updated title to "Advertisement"
+
+    // Create a close button for the window and set its styles
+    var closeButton = document.createElement("span");
+    closeButton.innerHTML = "&times;";
+    closeButton.style.position = "absolute";
+    closeButton.style.top = "5px";
+    closeButton.style.right = "5px";
+    closeButton.style.color = "#fff";
+    closeButton.style.cursor = "pointer";
+    closeButton.style.fontWeight = "bold";
+
+    // Function to close the window
+    closeButton.onclick = function () {
+        if (Math.random() < 0.1) {
+            // 10% chance of reopening
+            popup(url);
+        }
+        document.body.removeChild(windowDiv);
+    };
+
+    // Append the title bar and close button to the window
+    windowDiv.appendChild(titleBar);
+    windowDiv.appendChild(closeButton);
+
+    // Function to make the window draggable
+    function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (titleBar) {
+            // If the title bar is present, it's where you move the window from
+            titleBar.onmousedown = dragMouseDown;
+        } else {
+            // Otherwise, move the window from anywhere inside the div
+            elmnt.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // Get the mouse cursor's current position
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // Call a function whenever the cursor moves
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // Calculate the new cursor position
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // Set the element's new position
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            // Stop moving when the mouse button is released
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+
+    // Randomly set the initial position and size of the window
+    var maxWindowHeight = Math.floor(Math.random() * 200) + 200; // Favor larger heights
+    var maxWindowWidth = maxWindowHeight + Math.floor(Math.random() * 100); // Adjusted width based on height
+
+    // Ensure the window doesn't spawn too low
+    var maxYPosition = window.innerHeight - maxWindowHeight - 30; // 30px buffer
+    windowDiv.style.top = Math.floor(Math.random() * maxYPosition) + "px";
+
+    // Randomly set the initial horizontal position
+    var maxXPosition = window.innerWidth - maxWindowWidth;
+    windowDiv.style.left = Math.floor(Math.random() * maxXPosition) + "px";
+
+    var windowHeight = Math.floor(Math.random() * (maxWindowHeight - 100)) + 200; // Favor larger heights
+    var windowWidth = Math.floor(Math.random() * (maxWindowWidth - 100)) + 200; // Favor larger widths
+
+    // Ensure the minimum width and height are 200px
+    if (windowHeight < 200) {
+        windowHeight = 200;
+    }
+    if (windowWidth < 200) {
+        windowWidth = 200;
+    }
+
+    windowDiv.style.width = windowWidth + "px";
+    windowDiv.style.height = windowHeight + "px";
+
+    // Use the provided URL
+    var selectedUrl = url;
+
+    // Dynamically determine whether to use an iframe or an image element based on the file extension of the selected URL
+    if (selectedUrl.endsWith(".jpg") || selectedUrl.endsWith(".jpeg") || selectedUrl.endsWith(".png") || selectedUrl.endsWith(".gif")) {
+        // Use an image element
+        var img = document.createElement("img");
+        img.src = selectedUrl;
+        img.style.maxWidth = "100%";
+        img.style.maxHeight = "100%";
+        
+        // Create a div for the content and set its styles
+        var contentDiv = document.createElement("div");
+        contentDiv.style.width = "100%";
+        contentDiv.style.height = "100%";
+        contentDiv.style.overflow = "hidden"; // Hide content overflow
+        contentDiv.appendChild(img);
+
+        // Append the content div to the window div
+        windowDiv.appendChild(contentDiv);
+    } else {
+        // Use an iframe
+        var iframe = document.createElement("iframe");
+        iframe.src = selectedUrl;
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none";
+
+        // Create a div for the content and set its styles
+        var contentDiv = document.createElement("div");
+        contentDiv.style.width = "100%";
+        contentDiv.style.height = "100%";
+        contentDiv.style.overflow = "hidden"; // Hide content overflow
+        contentDiv.appendChild(iframe);
+
+        // Append the content div to the window div
+        windowDiv.appendChild(contentDiv);
+    }
+
+    // Append the window to the body
+    document.body.appendChild(windowDiv);
+
+    // Make the window draggable
+    dragElement(windowDiv);
+}
