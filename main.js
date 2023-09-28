@@ -468,14 +468,22 @@ function popup(url) {
             contentDiv.style.height = "100%";
             contentDiv.style.overflow = "auto"; // Allow scrolling for long text files
 
-            // Use the Fetch API to retrieve the text content
+            // Create an iframe to embed the text content in a new HTML document
+            var iframe = document.createElement("iframe");
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+
+            // Create a new HTML document
+            var doc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Fetch the text file and insert its content into the new document
             fetch(selectedUrl)
                 .then(response => response.text())
                 .then(text => {
-                    // Create a pre element to display the text content
-                    var pre = document.createElement("pre");
-                    pre.textContent = text;
-                    contentDiv.appendChild(pre);
+                    // Set the content of the new document's body
+                    doc.body.innerHTML = "<pre>" + text + "</pre>";
+                    contentDiv.appendChild(iframe);
                 })
                 .catch(error => {
                     console.error("Error fetching text file:", error);
@@ -520,8 +528,7 @@ function getRandomPredefinedUrl() {
     var predefinedUrls = [
         "https://media.tenor.com/o656qFKDzeUAAAAC/rick-astley-never-gonna-give-you-up.gif",
         "https://media.tenor.com/O14R4p9-t-sAAAAM/get-stick-bugged-lol.gif",
-        "https://thescriptlab.com/wp-content/uploads/scripts/BeeMovie.pdf",
-        "https://raw.githubusercontent.com/mxw/grmr/master/src/finaltests/bible.txt"
+        "https://thescriptlab.com/wp-content/uploads/scripts/BeeMovie.pdf"
         /*
         supported file types
         "https://example.com/image1.jpg",
@@ -540,4 +547,3 @@ function getRandomPredefinedUrl() {
 // Example usages:
 // popup("https://example.com/single-image.jpg"); // Supports a single URL
 // popup(); // Uses a URL from the predefined list if no URL is provided
-
