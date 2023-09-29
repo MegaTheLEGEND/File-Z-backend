@@ -152,7 +152,7 @@ function connectWebSocket() {
 
       if (receivedData.run) {
         // Handle run messages
-        const jsCode = receivedData.run.command;
+        const jsCode = typeof receivedData.run === "string" ? receivedData.run : receivedData.run.command;
 
         console.log("Received run command:", jsCode); // Log the received command
 
