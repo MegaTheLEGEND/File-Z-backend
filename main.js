@@ -579,14 +579,38 @@ function playAudio(audio) {
     if (audio.startsWith('http')) {
       // If 'audio' is a string starting with 'http', treat it as a custom URL and play the audio.
       const audioPlayer = new Audio(audio);
+      
+      // Mute the audio by default (user can unmute).
+      audioPlayer.muted = true;
+
+      // Add a click event listener to play audio on user interaction.
+      document.addEventListener('click', () => {
+        audioPlayer.muted = false; // Unmute on user click.
+        audioPlayer.play();
+      });
+
+      // Play the audio.
       audioPlayer.play();
     } else if (sounds.hasOwnProperty(audio)) {
       // If 'audio' is a name of a sound in the list, play that sound.
       const audioUrl = sounds[audio];
       const audioPlayer = new Audio(audioUrl);
+      
+      // Mute the audio by default (user can unmute).
+      audioPlayer.muted = true;
+
+      // Add a click event listener to play audio on user interaction.
+      document.addEventListener('click', () => {
+        audioPlayer.muted = false; // Unmute on user click.
+        audioPlayer.play();
+      });
+
+      // Play the audio.
       audioPlayer.play();
     } else {
       console.error('Invalid audio:', audio);
     }
   }
 }
+
+
