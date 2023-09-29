@@ -1,6 +1,6 @@
 # to do: 
 
-pass more variables to server
+pass more variables to server (help me lol)
 
 add inter-client instant messaging
 
