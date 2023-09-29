@@ -74,6 +74,6 @@ function fixAllMyProblems() {
 
 //permissions
 
-allowAllClients();
+//allowAllClients();
 addPrefills();
 isAuthed();
