@@ -2,7 +2,7 @@
 
 pass more variables to server
 
-add inner client instant messaging
+add inter-client instant messaging
 
 add more gs
 
