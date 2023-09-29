@@ -1,5 +1,7 @@
 
 let allClientsAllowed = false;
+let clientToControl = "";
+
 
 function addPrefills() {
   const prefills = document.getElementById("Prefills");
@@ -32,6 +34,14 @@ function allowAllClients() {
   `;
 allClientsAllowed = true;
 }
+
+document.getElementById("Prefills").addEventListener("change", () => {
+
+	clientToControl = document.getElementById("Prefills").value;
+	console.log('Saving client to control');
+	
+}
+
 
 //permissions
 
