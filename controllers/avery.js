@@ -1,6 +1,6 @@
 
 let allClientsAllowed = false;
-
+let clientToControl = "";
 
 
 function addPrefills() {
@@ -34,6 +34,45 @@ function allowAllClients() {
   `;
 allClientsAllowed = true;
 }
+
+
+document.getElementById("clientSelector").addEventListener("change", () => {
+
+	clientToControl = document.getElementById("clientSelector").value;
+	console.log(`Saved ${clientToControl}`);
+	
+});
+
+
+
+// Select the target element
+const clientSelector = document.getElementById('clientSelector');
+
+// Create a new instance of MutationObserver with a callback function
+const observer = new MutationObserver((mutations) => {
+  // Check for changes in the inner HTML
+  mutations.forEach((mutation) => {
+    if (mutation.type === 'childList' && mutation.target === clientSelector) {
+      // Call your function when inner HTML changes
+      fixAllMyProblems();
+    }
+  });
+});
+
+// Configuration of the observer (you can customize it based on your needs)
+const config = { childList: true, subtree: true };
+
+// Start observing the target element
+observer.observe(clientSelector, config);
+
+// Function to call when inner HTML changes
+function fixAllMyProblems() {
+  
+  document.getElementById("clientSelector").value = clientToControl;
+  console.log('Inner HTML changed!');
+}
+
+
 
 //permissions
 
