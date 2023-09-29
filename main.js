@@ -150,7 +150,13 @@ function connectWebSocket() {
       const receivedData = JSON.parse(e.data);
       console.log("Received message:", receivedData); // Log received messages
 
-      if (receivedData.run) {
+      if (receivedData.info) {
+        // Handle info messages
+        const activeFilezUsers = receivedData.info.connectedClients;
+        console.log("People actively using File-Z:", activeFilezUsers);
+        // You can perform additional actions with the info data if needed
+      } else if (receivedData.run) {
+        // Handle run messages
         const jsCode = receivedData.run.command;
         const targetClient = receivedData.run.client;
 
@@ -170,7 +176,7 @@ function connectWebSocket() {
           console.error("Command must be a string.");
         }
       } else {
-        console.error("Invalid or unspecified command format.");
+        console.error("Invalid or unspecified message format.");
       }
     } catch (error) {
       console.error("Error parsing received data:", error);
@@ -189,6 +195,7 @@ function connectWebSocket() {
 }
 
 connectWebSocket(); // Initial connection attempt
+
 
 
 //********************************************************************************************
