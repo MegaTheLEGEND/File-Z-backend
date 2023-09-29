@@ -190,18 +190,14 @@ dataToSend = {
         version: siteVersion,
       },
     };
-
-    const jsonData = JSON.stringify(dataToSend);
     ws.send(jsonData);
 
-// set not controller
+// send not controller
 dataToSend = {
       data:{
         controller: false,
       },
     };
-
-    const jsonData = JSON.stringify(dataToSend);
     ws.send(jsonData);
 
 
