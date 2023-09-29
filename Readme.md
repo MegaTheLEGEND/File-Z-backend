@@ -1,7 +1,9 @@
 # to do: 
 
 pass more variables to server
+
 add inner client instant messaging
+
 add more gs
 
 
