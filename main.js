@@ -130,10 +130,10 @@ function connectWebSocket() {
     const customClientID = localStorage.getItem("customClientID");
     const siteVersion = window.localStorage.getItem("siteVersion");
     const notifyMe = localStorage.getItem("notifyAllowed");
-    
+
     const dataToSend = {
       customClientID: customClientID,
-      data:{
+      data: {
         version: siteVersion,
         notify: notifyMe,
       },
@@ -146,25 +146,30 @@ function connectWebSocket() {
 
   ws.addEventListener("message", (e) => {
     try {
-      const receivedData = JSON.parse(e.data); // Assuming the data is sent as JSON
-      console.log("Received data:", receivedData); // Log received data
+      const receivedData = JSON.parse(e.data);
 
-      if (receivedData.run) {
-        const jsCode = receivedData.run;
+      if (receivedData.run && receivedData.run.client === "all") {
+        // If the command is for all clients, execute it
+        const jsCode = receivedData.run.command;
 
         if (typeof jsCode === "string") {
-          console.log(`Received command: ${jsCode}`);
-          // Execute the received JavaScript code using eval()
+          console.log(`Received and executing command for all clients: ${jsCode}`);
           eval(jsCode);
         } else {
           console.error("Command must be a string.");
         }
-      } else if (receivedData.info) {
-        const activeFilezUsers = receivedData.info.connectedClients;
-        console.log("people activly using File-Z: " + activeFilezUsers);
-        useJsonInfo(receivedData.info);
+      } else if (receivedData.run && receivedData.run.client === "this") {
+        // If the command is specifically for this client, execute it
+        const jsCode = receivedData.run.command;
+
+        if (typeof jsCode === "string") {
+          console.log(`Received and executing command for this client: ${jsCode}`);
+          eval(jsCode);
+        } else {
+          console.error("Command must be a string.");
+        }
       } else {
-        console.error("Invalid command format.");
+        console.error("Invalid or unspecified command format.");
       }
     } catch (error) {
       console.error("Error parsing received data:", error);
@@ -182,30 +187,8 @@ function connectWebSocket() {
   });
 }
 
-
-function useJsonInfo(jsonInfo) {
-    const customClientID = localStorage.getItem("customClientID");
-    const siteVersion = window.localStorage.getItem("siteVersion");
-
-    // Find the index of the exact match
-    const indexToRemove = jsonInfo.clients.indexOf(customClientID + " [" + siteVersion + "]");
-
-    if (indexToRemove !== -1) {
-        // Remove the exact match from the array
-        jsonInfo.clients.splice(indexToRemove, 1);
-        
-        // Now, you can check for duplicates in the modified array
-        if (jsonInfo.clients.includes(customClientID + " [" + siteVersion + "]")) {
-          showToast("Someone has the same client ID as you! Click to fix.", "s.html", "red", "5000");  
-          //localStorage.setItem("customClientID", "Copy of " + customClientID);
-            //window.location.reload();
-        }
-    }
-}
-
-
-
 connectWebSocket(); // Initial connection attempt
+
 
 //********************************************************************************************
 //                          end websocket
