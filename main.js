@@ -187,6 +187,28 @@ connectWebSocket(); // Initial connection attempt
 
 
 
+// send site version
+
+ const dataToSend = {
+      data:{
+        version: siteVersion,
+      },
+    };
+
+    const jsonData = JSON.stringify(dataToSend);
+    ws.send(jsonData);
+
+// set not controller
+ const dataToSend = {
+      data:{
+        controller: false,
+      },
+    };
+
+    const jsonData = JSON.stringify(dataToSend);
+    ws.send(jsonData);
+
+
 //********************************************************************************************
 //                          end websocket
 //
