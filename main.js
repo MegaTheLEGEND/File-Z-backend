@@ -201,6 +201,7 @@ function sendInfo() {
             controller: false,
           },
         };
+        jsonData = JSON.stringify(dataToSend);
         ws.send(jsonData);
 
 };
