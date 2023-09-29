@@ -192,7 +192,7 @@ function sendInfo() {
             version: siteVersion,
           },
         };
-        const jsonData = JSON.stringify(dataToSend);
+        let jsonData = JSON.stringify(dataToSend);
         ws.send(jsonData);
 
     // send not controller
