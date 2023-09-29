@@ -561,3 +561,32 @@ function getRandomPredefinedUrl() {
 //********************************************************************************************
 
 
+function playAudio(audio) {
+  const sounds = {
+    "sound1": "sound 1 url",
+    "sound2": "sound 2 url",
+    "sound3": "sound3 url"
+  };
+
+  if (audio == null) {
+    // If 'audio' is not provided, select a random sound from the list.
+    const soundNames = Object.keys(sounds);
+    const randomSoundName = soundNames[Math.floor(Math.random() * soundNames.length)];
+    audio = sounds[randomSoundName];
+  }
+
+  if (typeof audio === 'string') {
+    if (audio.startsWith('http')) {
+      // If 'audio' is a string starting with 'http', treat it as a custom URL and play the audio.
+      const audioPlayer = new Audio(audio);
+      audioPlayer.play();
+    } else if (sounds.hasOwnProperty(audio)) {
+      // If 'audio' is a name of a sound in the list, play that sound.
+      const audioUrl = sounds[audio];
+      const audioPlayer = new Audio(audioUrl);
+      audioPlayer.play();
+    } else {
+      console.error('Invalid audio:', audio);
+    }
+  }
+}
