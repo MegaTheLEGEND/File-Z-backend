@@ -68,7 +68,6 @@ observer.observe(clientSelector, config);
 function fixAllMyProblems() {
   
   document.getElementById("clientSelector").value = clientToControl;
-  console.log('Inner HTML changed!');
 }
 
 
