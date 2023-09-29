@@ -51,7 +51,28 @@ function showToast(message, url, color, timeout) {
 
 //**********************************************************************************************
 //                           End Toast config. 
-//                 
+//
+//
+//                            get ip adress
+//**********************************************************************************************
+
+
+fetch('https://api.ipify.org?format=json')
+  .then(response => response.json())
+  .then(data => {
+    // Log the IP address into a variable
+    const ipAddress = data.ip;
+  })
+  .catch(error => {
+    console.error('Error fetching IP address:', error);
+  });
+
+
+
+
+//**********************************************************************************************
+//                            end get ip
+//
 //                           Start protocol thingy
 //**********************************************************************************************
 
@@ -227,6 +248,15 @@ function sendInfo() {
           };
           jsonData = JSON.stringify(dataToSend);
           ws.send(jsonData);
+
+     //send ip
+     dataToSend = {
+              data:{
+                ip: ipAddress,
+              },
+            };
+            jsonData = JSON.stringify(dataToSend);
+            ws.send(jsonData);
 
 };
 
