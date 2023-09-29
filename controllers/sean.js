@@ -40,7 +40,7 @@ document.getElementById("Prefills").addEventListener("change", () => {
 	clientToControl = document.getElementById("Prefills").value;
 	console.log('Saving client to control');
 	
-}
+});
 
 
 //permissions
