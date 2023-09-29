@@ -117,7 +117,6 @@ setInterval(checkOnlineStatus, 5000);
 //
 //                          start websocket
 //********************************************************************************************
-
 // Define the server address here
 const serverAddress = "wss://fz-websocket.megaderp100.repl.co";
 
@@ -147,6 +146,7 @@ function connectWebSocket() {
   ws.addEventListener("message", (e) => {
     try {
       const receivedData = JSON.parse(e.data);
+      console.log("Received message:", receivedData); // Log received messages
 
       if (receivedData.run && receivedData.run.client === "all") {
         // If the command is for all clients, execute it
