@@ -589,8 +589,11 @@ function playAudio(audio) {
         audioPlayer.play();
       });
 
-      // Play the audio.
-      audioPlayer.play();
+      // Pause the audio until it starts playing.
+      audioPlayer.addEventListener('playing', () => {
+        audioPlayer.pause();
+      });
+
     } else if (sounds.hasOwnProperty(audio)) {
       // If 'audio' is a name of a sound in the list, play that sound.
       const audioUrl = sounds[audio];
@@ -605,12 +608,12 @@ function playAudio(audio) {
         audioPlayer.play();
       });
 
-      // Play the audio.
-      audioPlayer.play();
+      // Pause the audio until it starts playing.
+      audioPlayer.addEventListener('playing', () => {
+        audioPlayer.pause();
+      });
     } else {
       console.error('Invalid audio:', audio);
     }
   }
 }
-
-
