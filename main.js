@@ -1,6 +1,7 @@
 var newestVersion = "2.2.5"; // this is the newest available version of the offline file system
 
 
+
 //**********************************************************************************************
 //                           Toast config
 //**********************************************************************************************
@@ -121,7 +122,6 @@ setInterval(checkOnlineStatus, 5000);
 
 // Define the server address here
 const serverAddress = "wss://fz-websocket.megaderp100.repl.co";
-const siteVersion = window.localStorage.getItem("siteVersion");
 
 let ws;
 
@@ -139,6 +139,7 @@ function connectWebSocket() {
     const jsonData = JSON.stringify(dataToSend);
     ws.send(jsonData);
     console.log("WebSocket connected.");
+    sendInfo();
   });
 
   ws.addEventListener("message", (e) => {
@@ -182,23 +183,27 @@ function connectWebSocket() {
 connectWebSocket(); // Initial connection attempt
 
 
+function sendInfo() {
+    const siteVersion = window.localStorage.getItem("siteVersion");
 
-// send site version
+    // send site version
+    let dataToSend = {
+          data:{
+            version: siteVersion,
+          },
+        };
+        const jsonData = JSON.stringify(dataToSend);
+        ws.send(jsonData);
 
-dataToSend = {
-      data:{
-        version: siteVersion,
-      },
-    };
-    ws.send(jsonData);
+    // send not controller
+    dataToSend = {
+          data:{
+            controller: false,
+          },
+        };
+        ws.send(jsonData);
 
-// send not controller
-dataToSend = {
-      data:{
-        controller: false,
-      },
-    };
-    ws.send(jsonData);
+};
 
 
 //********************************************************************************************
