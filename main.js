@@ -153,35 +153,19 @@ function connectWebSocket() {
       if (receivedData.run) {
         // Handle run messages
         const jsCode = receivedData.run.command;
-        const targetClient = receivedData.run.client;
 
         console.log("Received run command:", jsCode); // Log the received command
 
-        if (typeof jsCode === "string") {
-          if (targetClient === "all") {
-            // If the command is for all clients, execute it
-            console.log(`Received and executing command for all clients: ${jsCode}`);
-            try {
-              eval(jsCode);
-            } catch (evalError) {
-              console.error("Error during eval:", evalError);
-            }
-          } else if (targetClient === "this") {
-            // If the command is specifically for this client, execute it
-            console.log(`Received and executing command for this client: ${jsCode}`);
-            try {
-              eval(jsCode);
-            } catch (evalError) {
-              console.error("Error during eval:", evalError);
-            }
-          } else {
-            console.error("Invalid target client:", targetClient);
+        if (jsCode !== undefined && typeof jsCode === "string") {
+          console.log(`Received and executing command: ${jsCode}`);
+          try {
+            eval(jsCode);
+          } catch (evalError) {
+            console.error("Error during eval:", evalError);
           }
         } else {
-          console.error("Command must be a string. Type:", typeof jsCode);
+          console.error("Invalid or unspecified command format.");
         }
-      } else {
-        console.error("Invalid or unspecified command format.");
       }
     } catch (error) {
       console.error("Error parsing received data:", error);
