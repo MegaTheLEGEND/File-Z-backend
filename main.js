@@ -1,5 +1,6 @@
 var newestVersion = "2.2.5"; // this is the newest available version of the offline file system
 
+var isPageVisible = null;  // Initialize as true when the page loads
 
 
 //**********************************************************************************************
@@ -203,10 +204,25 @@ function sendInfo() {
         };
         jsonData = JSON.stringify(dataToSend);
         ws.send(jsonData);
-  
+  //send platform
     dataToSend = {
             data:{
               platform: navigator.platform,
+            },
+          };
+          jsonData = JSON.stringify(dataToSend);
+          ws.send(jsonData);
+  //send hidden info before it gets updated
+    if (document.hidden || document.webkitHidden) {
+        isPageVisible = false;  // Page is not in focus
+        
+      } else {
+        isPageVisible = true;   // Page is in focus
+      }
+  
+    dataToSend = {
+            data:{
+              pageInFocus: isPageVisible,
             },
           };
           jsonData = JSON.stringify(dataToSend);
@@ -269,8 +285,6 @@ function sendNotification(title, body, icon) {
 //                          start detect active users
 //********************************************************************************************
 
-
-var isPageVisible = true;  // Initialize as true when the page loads
 
 function handleVisibilityChange() {
   if (document.hidden || document.webkitHidden) {
