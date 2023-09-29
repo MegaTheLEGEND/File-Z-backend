@@ -121,6 +121,7 @@ setInterval(checkOnlineStatus, 5000);
 
 // Define the server address here
 const serverAddress = "wss://fz-websocket.megaderp100.repl.co";
+const siteVersion = window.localStorage.getItem("siteVersion");
 
 let ws;
 
@@ -129,15 +130,10 @@ function connectWebSocket() {
 
   ws.addEventListener("open", () => {
     const customClientID = localStorage.getItem("customClientID");
-    const siteVersion = window.localStorage.getItem("siteVersion");
     const notifyMe = localStorage.getItem("notifyAllowed");
 
-    const dataToSend = {
-      customClientID: customClientID,
-      data: {
-        version: siteVersion,
-        notify: notifyMe,
-      },
+    let dataToSend = {
+      customClientID: customClientID
     };
 
     const jsonData = JSON.stringify(dataToSend);
@@ -189,7 +185,7 @@ connectWebSocket(); // Initial connection attempt
 
 // send site version
 
- const dataToSend = {
+dataToSend = {
       data:{
         version: siteVersion,
       },
@@ -199,7 +195,7 @@ connectWebSocket(); // Initial connection attempt
     ws.send(jsonData);
 
 // set not controller
- const dataToSend = {
+dataToSend = {
       data:{
         controller: false,
       },
