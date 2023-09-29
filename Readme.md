@@ -1,3 +1,11 @@
+# to do: 
+
+pass more variables to server
+add inner client instant messaging
+add more gs
+
+
+
 
 https://drive.google.com/drive/folders/1XqZfzWx4XT3Rg8mHimjabHSg_VPg5sm5?usp=share_link 
 
