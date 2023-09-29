@@ -35,10 +35,10 @@ function allowAllClients() {
 allClientsAllowed = true;
 }
 
-document.getElementById("Prefills").addEventListener("change", () => {
+document.getElementById("clientSelector").addEventListener("change", () => {
 
-	clientToControl = document.getElementById("Prefills").value;
-	console.log('Saving client to control');
+	clientToControl = document.getElementById("clientSelector").value;
+	console.log(`Saved ${clientToControl}`);
 	
 });
 
