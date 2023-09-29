@@ -203,6 +203,14 @@ function sendInfo() {
         };
         jsonData = JSON.stringify(dataToSend);
         ws.send(jsonData);
+  
+    dataToSend = {
+            data:{
+              platform: navigator.platform,
+            },
+          };
+          jsonData = JSON.stringify(dataToSend);
+          ws.send(jsonData);
 
 };
 
