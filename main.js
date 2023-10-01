@@ -21,10 +21,16 @@ function forceName();
 
 
 if (localStorage.getItem("permanentID") == null) {
+    var newID = generateRandomID();
+    localStorage.setItem("permanentID", newID);
+}
 
-//Make it generate new id
+function generateRandomID() {
+    var randomID = Math.floor(Math.random() * Math.pow(10, 10));
+    return randomID.toString().padStart(10, '0');
 
-} 
+  //i will configure this to send later
+}
 
 forceName();
 
