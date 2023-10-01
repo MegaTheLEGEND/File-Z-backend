@@ -237,7 +237,7 @@ function sendInfo() {
 //                                   start force identification
 //**********************************************************************************************
 
-function forceName();{
+function forceName(){
   if (localStorage.getItem("customClientID") == null) {
       // Make a popup for the user to input their name
       var clientNameInput = window.prompt("It looks like your client has no name. Input a unique name.");
