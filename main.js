@@ -8,6 +8,19 @@ var isPageVisible = null;  // Initialize as null when the page loads
 //**********************************************************************************************
 
 
+if (localStorage.getItem("customClientID") == null) {
+
+//make popup for user to input name
+
+}
+
+
+if (localStorage.getItem("permanentID") == null) {
+
+//Make it generate new id
+
+} 
+
 
 
 //**********************************************************************************************
