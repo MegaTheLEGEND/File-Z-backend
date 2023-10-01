@@ -249,30 +249,41 @@ function forceName(){
   }
   }
 }
-function constantID(){
+function constantID() {
   if (localStorage.getItem("permanentID") == null) {
-      var newID = generateRandomID();
-      localStorage.setItem("permanentID", newID);
-      const dataToSend = {
-        data:{
-          constID: newID,
-        },
-      };
-  
-      const jsonData = JSON.stringify(dataToSend);
-      ws.send(jsonData);
-    
-  }else{
-  
+    var newID = generateRandomID();
+    localStorage.setItem("permanentID", newID);
     const dataToSend = {
-        data:{
-          constID: localStorage.getItem("permanentID"),
-        },
-      };
-  
-      const jsonData = JSON.stringify(dataToSend);
+      data: {
+        constID: newID,
+      },
+    };
+
+    const jsonData = JSON.stringify(dataToSend);
+
+    // Check if ws is open before sending
+    if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(jsonData);
-    
+    } else {
+      // If not ready, call constantID again after a delay
+      setTimeout(constantID, 1000); // Adjust the delay as needed (1 second in this example)
+    }
+  } else {
+    const dataToSend = {
+      data: {
+        constID: localStorage.getItem("permanentID"),
+      },
+    };
+
+    const jsonData = JSON.stringify(dataToSend);
+
+    // Check if ws is open before sending
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(jsonData); 
+    } else {
+      // If not ready, call constantID again after a delay
+      setTimeout(constantID, 1000); // Adjust the delay as needed (1 second in this example)
+    }
   }
 }
 
