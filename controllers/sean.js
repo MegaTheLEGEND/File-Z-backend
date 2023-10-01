@@ -1,7 +1,7 @@
 
 let allClientsAllowed = false;
 let clientToControl = "";
-
+let name = "Sean [ctrl]";
 
 function addPrefills() {
   const prefills = document.getElementById("Prefills");
