@@ -91,20 +91,14 @@ function askFunction() {
     // Function to save the client ID to local storage
     function saveClientID() {
         var newClientID = document.getElementById("Client-ID").value;
-        
-    
-    function generateRandomNumber() {
-        return Math.floor(Math.random() * 1000000000000); // Adjust the range as needed
-    }
+        showToast("Saved", "#", "green", "2000");
+}
+
 
     // Function to populate the input field with the stored client ID on page load
     function populateClientID() {
         var storedClientID = localStorage.getItem("customClientID");
-        if (!storedClientID) {
-            storedClientID = generateRandomNumber();
-            localStorage.setItem("customClientID", storedClientID);
-        }
         document.getElementById("Client-ID").value = storedClientID;
-    }
 }
+
 window.addEventListener('load', populateClientID);
