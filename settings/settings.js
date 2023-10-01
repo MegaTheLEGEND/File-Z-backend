@@ -107,3 +107,4 @@ function askFunction() {
         document.getElementById("Client-ID").value = storedClientID;
     }
 }
+window.addEventListener('load', populateClientID);
