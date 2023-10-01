@@ -92,17 +92,7 @@ function askFunction() {
     function saveClientID() {
         var newClientID = document.getElementById("Client-ID").value;
         
-        // Check if the input is blank, and if so, generate a random number
-        if (!newClientID) {
-            newClientID = generateRandomNumber();
-            document.getElementById("Client-ID").value = newClientID;
-        }
-
-        localStorage.setItem("customClientID", newClientID);
-        showToast("Client ID saved to local storage: " + newClientID, "#", "green", "2000");
-    }
-
-    // Function to generate a random big long number
+    
     function generateRandomNumber() {
         return Math.floor(Math.random() * 1000000000000); // Adjust the range as needed
     }
