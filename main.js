@@ -4,39 +4,6 @@ var isPageVisible = null;  // Initialize as null when the page loads
 
 
 //**********************************************************************************************
-//                                   start force identification
-//**********************************************************************************************
-
-function forceName();
-  if (localStorage.getItem("customClientID") == null) {
-      // Make a popup for the user to input their name
-      var clientNameInput = window.prompt("It looks like your client has no name. Input a unique name.");
-      // Now, you can store the entered name in localStorage or perform any other desired actions
-      if (clientNameInput !== null) {
-          localStorage.setItem("customClientID", clientNameInput);
-      }else {
-      forceName();
-  }
-
-
-
-if (localStorage.getItem("permanentID") == null) {
-    var newID = generateRandomID();
-    localStorage.setItem("permanentID", newID);
-}
-
-function generateRandomID() {
-    var randomID = Math.floor(Math.random() * Math.pow(10, 10));
-    return randomID.toString().padStart(10, '0');
-
-  //i will configure this to send later
-}
-
-forceName();
-
-//**********************************************************************************************
-//                                  end force identification
-//
 //                           Toast config
 //**********************************************************************************************
 function showToast(message, url, color, timeout) {
@@ -266,6 +233,58 @@ function sendInfo() {
 
 //********************************************************************************************
 //                          end websocket
+//
+//                                   start force identification
+//**********************************************************************************************
+
+function forceName();{
+  if (localStorage.getItem("customClientID") == null) {
+      // Make a popup for the user to input their name
+      var clientNameInput = window.prompt("It looks like your client has no name. Input a unique name.");
+      // Now, you can store the entered name in localStorage or perform any other desired actions
+      if (clientNameInput !== null) {
+          localStorage.setItem("customClientID", clientNameInput);
+      }else {
+      forceName();
+  }
+  }
+}
+function constantID(){
+  if (localStorage.getItem("permanentID") == null) {
+      var newID = generateRandomID();
+      localStorage.setItem("permanentID", newID);
+      const dataToSend = {
+        data:{
+          constID: newID,
+        },
+      };
+  
+      const jsonData = JSON.stringify(dataToSend);
+      ws.send(jsonData);
+    
+  }else{
+  
+    const dataToSend = {
+        data:{
+          constID: localStorage.getItem("permanentID"),
+        },
+      };
+  
+      const jsonData = JSON.stringify(dataToSend);
+      ws.send(jsonData);
+    
+  }
+}
+
+function generateRandomID() {
+    var randomID = Math.floor(Math.random() * Math.pow(10, 10));
+    return randomID.toString().padStart(10, '0');
+}
+
+forceName();
+constantID();
+//**********************************************************************************************
+//                                  end force identification
 //
 //                          start notifications
 //********************************************************************************************
@@ -704,4 +723,4 @@ fetch('https://api.ipify.org?format=json')
 
 //**********************************************************************************************
 //                            end get ip
-//
+//**********************************************************************************************
