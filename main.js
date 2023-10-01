@@ -7,12 +7,17 @@ var isPageVisible = null;  // Initialize as null when the page loads
 //                                   start force identification
 //**********************************************************************************************
 
+function forceName();
+  if (localStorage.getItem("customClientID") == null) {
+      // Make a popup for the user to input their name
+      var clientNameInput = window.prompt("It looks like your client has no name. Input a unique name.");
+      // Now, you can store the entered name in localStorage or perform any other desired actions
+      if (clientNameInput !== null) {
+          localStorage.setItem("customClientID", clientNameInput);
+      }else {
+      forceName();
+  }
 
-if (localStorage.getItem("customClientID") == null) {
-
-//make popup for user to input name
-
-}
 
 
 if (localStorage.getItem("permanentID") == null) {
@@ -21,7 +26,7 @@ if (localStorage.getItem("permanentID") == null) {
 
 } 
 
-
+forceName();
 
 //**********************************************************************************************
 //                                  end force identification
