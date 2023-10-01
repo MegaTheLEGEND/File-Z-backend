@@ -10,7 +10,7 @@ function addPrefills() {
   prefills.innerHTML = `
     <option value="alert('')">Alert</option>
     <option value='showToast("", "#", "blue", "3000")'>Toast</option>
-    <option value="//localStorage.setItem('customClientID', '')">Change Friendly Name</option>
+    <option value="//localStorage.setItem('customClientID', '')">Change User Set Name</option>
     <option value="//localStorage.setItem('constID', '')">Change Constant ID</option>
     <option value="window.location.replace('https://')">Replace URL</option>
     <option value="window.location.replace('css/other-assets/index.html')">Rick Roll</option>
