@@ -238,19 +238,7 @@ function sendInfo() {
 //********************************************************************************************
 function handleBan() {
 isBanned = localStorage.getItem("isBanned");
-  function handleUnban() {
-          var banOverlay = document.getElementById("banned");
-          document.body.removeChild(banOverlay);
-        }
 if (isBanned !== null){
-
-
-  let dataToSend = {
-          data:{
-            isBanned: isBanned,
-          },
-        };
-        let jsonData = JSON.stringify(dataToSend);
         showToast(isBanned, "#", "red", "20000");
         //alert(isBanned);
         // Create a new div element
@@ -288,12 +276,19 @@ if (isBanned !== null){
         
         // Append the div to the body of the document
         document.body.appendChild(overlayDiv);
-        
+
+
+     let dataToSend = {
+          data:{
+            isBanned: isBanned,
+          },
+        };
+        let jsonData = JSON.stringify(dataToSend);
   
          if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(jsonData); 
             } else {
-              // If not ready, call constantID again after a delay
+              // If not ready, call handleBan again after a delay
               setTimeout(handleBan, 1000);
          }
   
@@ -308,12 +303,18 @@ if (isBanned !== null){
         if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(jsonData); 
     } else {
-      // If not ready, call constantID again after a delay
+      // If not ready, call handleBan again after a delay
       setTimeout(handleBan, 1000);
   
 }
 }
 }
+
+function handleUnban() {
+          var banOverlay = document.getElementById("banned");
+          document.body.removeChild(banOverlay);
+        }
+
 
 handleBan()
 
