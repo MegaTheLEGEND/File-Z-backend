@@ -237,6 +237,7 @@ function sendInfo() {
 //                          start banhandler
 //********************************************************************************************
 function handleBan() {
+isBanned = localStorage.getItem("isBanned");
 if (isBanned !== null){
 
 
