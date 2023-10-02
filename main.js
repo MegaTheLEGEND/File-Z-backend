@@ -248,7 +248,41 @@ if (isBanned !== null){
         let jsonData = JSON.stringify(dataToSend);
         showToast(isBanned, "#", "red", "10000");
         alert(isBanned);
-        window.location.reload();
+        // Create a new div element
+        var overlayDiv = document.createElement("div");
+        
+        // Set styles for the overlay div to cover the entire page
+        overlayDiv.style.position = "fixed";
+        overlayDiv.style.top = "0";
+        overlayDiv.style.left = "0";
+        overlayDiv.style.width = "100%";
+        overlayDiv.style.height = "100%";
+        overlayDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Semi-transparent black background
+        overlayDiv.style.cursor = "not-allowed"; // Set cursor to '🚫'
+        
+        // Create an iframe element
+        var iframe = document.createElement("iframe");
+        
+        // Set styles for the iframe to fill the overlay div
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none"; // Remove iframe border
+        iframe.src = "player.html/?url=File-Z-backend/about/banned/banned.js"; // Replace with your desired URL
+        
+        // Add the iframe to the overlay div
+        overlayDiv.appendChild(iframe);
+        
+        // Append the div to the body of the document
+        document.body.appendChild(overlayDiv);
+        
+        // Add event listener to change cursor when mouse is over the page
+        document.addEventListener("mouseover", function () {
+          overlayDiv.style.cursor = "not-allowed";
+        });
+        
+        // Append the div to the body of the document
+        document.body.appendChild(overlayDiv);
+  
          if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(jsonData); 
             } else {
