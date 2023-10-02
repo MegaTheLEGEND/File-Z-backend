@@ -246,7 +246,9 @@ if (isBanned !== null){
           },
         };
         let jsonData = JSON.stringify(dataToSend);
-        window.location.replace("https://google.com")
+        showToast(isBanned, "#", "red", "10000");
+        alert(isBanned);
+        window.location.reload();
          if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(jsonData); 
             } else {
