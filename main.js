@@ -257,8 +257,9 @@ if (isBanned !== null){
         overlayDiv.style.left = "0";
         overlayDiv.style.width = "100%";
         overlayDiv.style.height = "100%";
+        overlayDiv.style.zIndex = "9999";
         overlayDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Semi-transparent black background
-        overlayDiv.style.cursor = "not-allowed"; // Set cursor to '🚫'
+        overlayDiv.style.cursor = "not-allowed"; 
         
         // Create an iframe element
         var iframe = document.createElement("iframe");
@@ -267,7 +268,7 @@ if (isBanned !== null){
         iframe.style.width = "100%";
         iframe.style.height = "100%";
         iframe.style.border = "none"; // Remove iframe border
-        iframe.src = "player.html/?url=File-Z-backend/about/banned/banned.js"; // Replace with your desired URL
+        iframe.src = "player.html?url=File-Z-backend/about/banned/banned.js"; // Replace with your desired URL
         
         // Add the iframe to the overlay div
         overlayDiv.appendChild(iframe);
