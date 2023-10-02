@@ -238,6 +238,10 @@ function sendInfo() {
 //********************************************************************************************
 function handleBan() {
 isBanned = localStorage.getItem("isBanned");
+  function removeBanOverlay() {
+          // Remove the overlay div
+          document.body.removeChild(overlayDiv);
+        }
 if (isBanned !== null){
 
 
@@ -284,10 +288,7 @@ if (isBanned !== null){
         
         // Append the div to the body of the document
         document.body.appendChild(overlayDiv);
-        function removeBanOverlay() {
-          // Remove the overlay div
-          document.body.removeChild(overlayDiv);
-        }
+        
   
          if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(jsonData); 
