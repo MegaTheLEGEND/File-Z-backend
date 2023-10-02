@@ -1,6 +1,7 @@
 
 let allClientsAllowed = false;
 let clientToControl = "";
+let name = "Avery [ctrl]";
 
 
 function addPrefills() {
