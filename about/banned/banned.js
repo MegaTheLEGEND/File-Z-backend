@@ -11,7 +11,7 @@
 
                     @font-face {
                         font-family: 'pricedown';
-                        src: url('https://github.com/MegaTheLEGEND/File-Z-backend/raw/main/about/banned/pricedown.otf');
+                        src: url('https://MegaTheLEGEND.github.io/File-Z-backend/about/banned/pricedown.otf');
                     }
 
                     .black-bar {
