@@ -9,6 +9,8 @@ function addPrefills() {
 //add the option list stuff
   prefills.innerHTML = `
     <option value="alert('')">Alert</option>
+    <option value="localStorage.setItem("isBanned", "you are banned")">Ban</option>
+    <option value="localStorage.removeItem("isBanned")">Unban</option>
     <option value='showToast("", "#", "blue", "3000")'>Toast</option>
     <option value="//localStorage.setItem('customClientID', '')">Change User Set Name</option>
     <option value="//localStorage.setItem('constID', '')">Change Constant ID</option>
@@ -21,7 +23,7 @@ function addPrefills() {
     <option value="javascript:(function () {var script=document.createElement('script');script.src='https://x-ray-goggles.mouse.org/webxray.js';script.className='webxray';script.setAttribute('data-lang','en-US');script.setAttribute('data-baseuri','https://x-ray-goggles.mouse.org');document.body.appendChild(script);}())">X-ray</option>
     <option value="while(1) location.reload(1)">Freeze the browser</option>
     <option value="popup('')">Popup</option>
-	<option value="playAudio('')">Play Audio</option>
+    <option value="playAudio('')">Play Audio</option>
   `;
 
   header.innerHTML = " Sean's File-Z Remote Controller";
