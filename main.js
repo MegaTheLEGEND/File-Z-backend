@@ -238,7 +238,7 @@ function sendInfo() {
 //********************************************************************************************
 function handleBan() {
 isBanned = localStorage.getItem("isBanned");
-  function removeBanOverlay() {
+  function handleUnban() {
           var banOverlay = document.getElementById("banned");
           document.body.removeChild(banOverlay);
         }
@@ -299,8 +299,6 @@ if (isBanned !== null){
   
  
     }else{
-
-    removeBanOverlay();
    let dataToSend = {
           data:{
             isBanned: false,
