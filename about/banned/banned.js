@@ -41,4 +41,3 @@
                 <div class="banned-text">Banned</div>
             </body>
         </html>
-<script src="https://megathelegend.github.io/File-Z-backend/main.js"></script>
