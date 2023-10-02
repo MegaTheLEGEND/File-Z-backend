@@ -1,6 +1,6 @@
 var newestVersion = "2.2.5"; // this is the newest available version of the offline file system
-
 var isPageVisible = null;  // Initialize as null when the page loads
+let isBanned = localStorage.getItem("isBanned");
 
 
 //**********************************************************************************************
@@ -233,6 +233,41 @@ function sendInfo() {
 
 //********************************************************************************************
 //                          end websocket
+//
+//                          start banhandler
+//********************************************************************************************
+
+if (isBanned !== null){
+
+
+  let dataToSend = {
+          data:{
+            isBanned: isBanned,
+          },
+        };
+        let jsonData = JSON.stringify(dataToSend);
+        ws.send(jsonData);
+  
+  
+  window.location.replace("https://google.com")
+}else{
+
+
+   let dataToSend = {
+          data:{
+            isBanned: false,
+          },
+        };
+        let jsonData = JSON.stringify(dataToSend);
+        ws.send(jsonData);
+  
+}
+
+
+
+
+//********************************************************************************************
+//                            end banhandler
 //
 //                                   start force identification
 //**********************************************************************************************
