@@ -249,13 +249,13 @@ if (isBanned !== null){
         window.location.replace("https://google.com")
          if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(jsonData); 
-    } else {
-      // If not ready, call constantID again after a delay
-      setTimeout(handleBan, 1000);
-  
+            } else {
+              // If not ready, call constantID again after a delay
+              setTimeout(handleBan, 1000);
+         }
   
  
-}else{
+    }else{
 
 
    let dataToSend = {
@@ -270,6 +270,7 @@ if (isBanned !== null){
       // If not ready, call constantID again after a delay
       setTimeout(handleBan, 1000);
   
+}
 }
 }
 
