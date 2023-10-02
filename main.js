@@ -302,7 +302,7 @@ function constantID() {
     localStorage.setItem("permanentID", newID);
     const dataToSend = {
       data: {
-        constID: newID,
+        permanentID: newID,
       },
     };
 
@@ -318,7 +318,7 @@ function constantID() {
   } else {
     const dataToSend = {
       data: {
-        constID: localStorage.getItem("permanentID"),
+        permanentID: localStorage.getItem("permanentID"),
       },
     };
 
