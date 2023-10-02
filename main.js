@@ -284,6 +284,10 @@ if (isBanned !== null){
         
         // Append the div to the body of the document
         document.body.appendChild(overlayDiv);
+        function removeBanOverlay() {
+          // Remove the overlay div
+          document.body.removeChild(overlayDiv);
+        }
   
          if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(jsonData); 
@@ -295,7 +299,7 @@ if (isBanned !== null){
  
     }else{
 
-
+    removeBanOverlay()
    let dataToSend = {
           data:{
             isBanned: false,
