@@ -236,7 +236,7 @@ function sendInfo() {
 //
 //                          start banhandler
 //********************************************************************************************
-
+function handleBan() {
 if (isBanned !== null){
 
 
@@ -246,10 +246,15 @@ if (isBanned !== null){
           },
         };
         let jsonData = JSON.stringify(dataToSend);
-        ws.send(jsonData);
+        window.location.replace("https://google.com")
+         if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(jsonData); 
+    } else {
+      // If not ready, call constantID again after a delay
+      setTimeout(handleBan, 1000);
   
   
-  window.location.replace("https://google.com")
+ 
 }else{
 
 
@@ -259,12 +264,16 @@ if (isBanned !== null){
           },
         };
         let jsonData = JSON.stringify(dataToSend);
-        ws.send(jsonData);
+        if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(jsonData); 
+    } else {
+      // If not ready, call constantID again after a delay
+      setTimeout(handleBan, 1000);
   
 }
+}
 
-
-
+handleBan()
 
 //********************************************************************************************
 //                            end banhandler
@@ -301,7 +310,7 @@ function constantID() {
       ws.send(jsonData);
     } else {
       // If not ready, call constantID again after a delay
-      setTimeout(constantID, 1000); // Adjust the delay as needed (1 second in this example)
+      setTimeout(constantID, 1000); 
     }
   } else {
     const dataToSend = {
@@ -317,7 +326,7 @@ function constantID() {
       ws.send(jsonData); 
     } else {
       // If not ready, call constantID again after a delay
-      setTimeout(constantID, 1000); // Adjust the delay as needed (1 second in this example)
+      setTimeout(constantID, 1000); 
     }
   }
 }
