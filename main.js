@@ -251,7 +251,7 @@ if (isBanned !== null){
           },
         };
         let jsonData = JSON.stringify(dataToSend);
-        showToast(isBanned, "#", "red", "10000000000000");
+        showToast(isBanned, "#", "red", "20000");
         //alert(isBanned);
         // Create a new div element
         var overlayDiv = document.createElement("div");
