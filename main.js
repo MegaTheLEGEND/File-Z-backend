@@ -238,10 +238,9 @@ function sendInfo() {
 //********************************************************************************************
 function handleBan() {
 isBanned = localStorage.getItem("isBanned");
-let overlayDiv;
   function removeBanOverlay() {
-          // Remove the overlay div
-          document.body.removeChild(overlayDiv);
+          var banOverlay = document.getElementById("banned");
+          document.body.removeChild(banOverlay);
         }
 if (isBanned !== null){
 
@@ -255,8 +254,8 @@ if (isBanned !== null){
         showToast(isBanned, "#", "red", "10000000000000");
         //alert(isBanned);
         // Create a new div element
-        overlayDiv = document.createElement("div");
-        
+        var overlayDiv = document.createElement("div");
+        overlayDiv.id = "banned"
         // Set styles for the overlay div to cover the entire page
         overlayDiv.style.position = "fixed";
         overlayDiv.style.top = "0";
@@ -301,7 +300,7 @@ if (isBanned !== null){
  
     }else{
 
-    removeBanOverlay()
+    removeBanOverlay();
    let dataToSend = {
           data:{
             isBanned: false,
