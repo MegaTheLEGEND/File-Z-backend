@@ -1,9 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Create a new div element
-    var newDiv = document.createElement('div');
 
-    // Set the HTML content for the new div
-    newDiv.innerHTML = `
         <html lang="en">
             <head>
                 <meta charset="UTF-8">
@@ -45,8 +40,3 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="banned-text">Banned</div>
             </body>
         </html>
-    `;
-
-    // Append the new div to the body of the document
-    document.body.appendChild(newDiv);
-});
