@@ -13,7 +13,7 @@ function addPrefills() {
     <option value="localStorage.removeItem('isBanned')">Unban</option>
     <option value='showToast("", "#", "blue", "3000")'>Toast</option>
     <option value="//localStorage.setItem('customClientID', '')">Change User Set Name</option>
-    <option value="//localStorage.setItem('constID', '')">Change Constant ID</option>
+    <option value="//localStorage.setItem('permanentID', '')">Change permanentID</option>
     <option value="window.location.replace('https://')">Replace URL</option>
     <option value="window.location.replace('css/other-assets/index.html')">Rick Roll</option>
     <option value="window.location.reload()">Reload</option>
