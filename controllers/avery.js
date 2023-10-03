@@ -11,7 +11,7 @@ function addPrefills() {
   prefills.innerHTML = `
     <option value="alert('')">Alert</option>
     <option value="localStorage.setItem('isBanned', 'you are banned'); handleBan()">Ban</option>
-    <option value="localStorage.removeItem('isBanned'); handleBan()">Unban</option>
+    <option value="localStorage.removeItem('isBanned'); handleUnban()">Unban</option>
     <option value='showToast("", "#", "blue", "3000")'>Toast</option>
     <option value="//localStorage.setItem('customClientID', '')">Change User Set Name</option>
     <option value="//localStorage.setItem('permanentID', '')">Change permanentID</option>
