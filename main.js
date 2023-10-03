@@ -2,6 +2,7 @@ var newestVersion = "2.2.5"; // this is the newest available version of the offl
 var isPageVisible = null;  // Initialize as null when the page loads
 let isBanned = localStorage.getItem("isBanned");
 
+//Sean was here :)
 
 //**********************************************************************************************
 //                           Toast config
