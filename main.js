@@ -16,6 +16,7 @@ function showToast(message, url, color, timeout) {
     container.style.position = 'fixed';
     container.style.bottom = '20px';
     container.style.right = '20px';
+    container.style.zIndex = "9999";
     document.body.appendChild(container);
   }
 
