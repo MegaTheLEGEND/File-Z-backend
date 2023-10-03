@@ -75,6 +75,39 @@ function fixAllMyProblems() {
 
 
 
+    // Function to reload the page
+    function refreshPage() {
+        location.reload();
+    }
+
+    // Creating a button element
+    var refreshButton = document.createElement("button");
+    refreshButton.innerHTML = "Refresh";
+    refreshButton.addEventListener("click", refreshPage);
+
+    // Finding the element by ID
+    var sendButton = document.getElementById("sendButton");
+
+    // Setting margin-top using style property
+    refreshButton.style.marginTop = "30px";
+    refreshButton.style.paddingLeft = "192px";
+    refreshButton.style.paddingRight = "192px";
+    refreshButton.style.paddingTop = "5px";
+    refreshButton.style.paddingBottom = "5px";
+    refreshButton.style.backgroundColor = "hotpink";
+    refreshButton.style.borderRadius = "25px";
+
+   
+   
+   
+
+    // Inserting the button after the sendButton element
+    sendButton.insertAdjacentElement('afterend', refreshButton);
+
+
+
+
+
 //permissions
 
 //allowAllClients();
