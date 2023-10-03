@@ -90,8 +90,8 @@ function fixAllMyProblems() {
 
     // Setting margin-top using style property
     refreshButton.style.marginTop = "30px";
-    refreshButton.style.paddingLeft = "192px";
-    refreshButton.style.paddingRight = "192px";
+    refreshButton.style.paddingLeft = "38.8%";
+    refreshButton.style.paddingRight = "38.8%";
     refreshButton.style.paddingTop = "5px";
     refreshButton.style.paddingBottom = "5px";
     refreshButton.style.backgroundColor = "hotpink";
