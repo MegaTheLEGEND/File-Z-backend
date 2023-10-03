@@ -1,13 +1,10 @@
 # to do: 
 
-pass more variables to server (help me lol)
-
-add inter-client instant messaging
 
 add more gs
 
 
-
+# install / play
 
 https://drive.google.com/drive/folders/1XqZfzWx4XT3Rg8mHimjabHSg_VPg5sm5?usp=share_link 
 
