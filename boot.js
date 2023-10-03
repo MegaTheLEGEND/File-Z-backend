@@ -39,8 +39,7 @@ lines = [
   } else {
 	document.addEventListener('keydown', function(event) {
 	    if (event.code === 'Space') {
-	        // Your code to handle spacebar click goes here
-	        console.log('Spacebar was pressed!');
+		window.location.replace('File-Z-master/index.html')
 	    }
 	});
 	  
