@@ -1,3 +1,5 @@
+// Create HTML elements
+const htmlString = `
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -59,12 +61,9 @@
 
       // Array of API endpoints
       const apiEndpoints = [
-        `https://ipinfo.io/${ipInput}/json`,
-        `https://ipapi.co/${ipInput}/json/`,
-      
-      
-    
-        `https://ipwhois.app/json/${ipInput}`,
+        \`https://ipinfo.io/\${ipInput}/json\`,
+        \`https://ipapi.co/\${ipInput}/json/\`,
+        \`https://ipwhois.app/json/\${ipInput}\`,
         // Add more API endpoints here
       ];
 
@@ -88,9 +87,9 @@
             // Use Leaflet's default marker icon (pin)
             const marker = L.marker([lat, lon]);
 
-            marker.addTo(map).bindPopup(`<b>Info from API ${index + 1}</b><br>${JSON.stringify(data, null, 2)}`);
+            marker.addTo(map).bindPopup(\`<b>Info from API \${index + 1}</b><br>\${JSON.stringify(data, null, 2)}\`);
           })
-          .catch(error => console.error(`Error fetching API ${index + 1}:`, error));
+          .catch(error => console.error(\`Error fetching API \${index + 1}:\`, error));
       });
 
       // Set the map view based on the first API result
@@ -106,3 +105,11 @@
 
 </body>
 </html>
+`;
+
+// Create a DOM element and set its innerHTML
+const container = document.createElement('div');
+container.innerHTML = htmlString;
+
+// Append the created HTML to the document body
+document.body.appendChild(container);
