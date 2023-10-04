@@ -22,21 +22,60 @@ document.head.appendChild(leafletStylesheet);
 // Create style element for inline styles
 const inlineStyle = document.createElement('style');
 inlineStyle.textContent = `
+  body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
   #map {
     height: 100vh;
   }
+
   table {
     border-collapse: collapse;
     width: 100%;
     margin-top: 20px;
+    background-color: white;
+    color: black;
   }
+
   th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
   }
+
   th {
     background-color: #f2f2f2;
+  }
+
+  h2 {
+    color: white;
+  }
+
+  label {
+    color: white;
+  }
+
+  input {
+    color: black;
+    background-color: white;
+    padding: 8px;
+    margin-right: 8px;
+  }
+
+  button {
+    color: white;
+    background-color: #4CAF50;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
   }
 `;
 document.head.appendChild(inlineStyle);
