@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IP Information with Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
+    <style>
     #map {
-      height: 400px;
+      height: 100vh; /* Set height to 100% of viewport height */
     }
     table {
       border-collapse: collapse;
@@ -62,9 +62,9 @@
       const apiEndpoints = [
         `https://ipinfo.io/${ipInput}/json`,
         `https://ipapi.co/${ipInput}/json/`,
-        `https://api64.ipstack.com/${ipInput}?output=json`,
-        `https://ipapi.io/${ipInput}/json`,
-        `https://freegeoip.app/json/${ipInput}`,
+      
+      
+    
         `https://ipwhois.app/json/${ipInput}`,
         // Add more API endpoints here
       ];
@@ -83,10 +83,13 @@
               cell2.textContent = value;
             }
 
-            // Show the location on the map with different markers
+            // Show the location on the map with different colored markers
             const [lat, lon] = data.loc ? data.loc.split(',').map(Number) : [parseFloat(data.latitude), parseFloat(data.longitude)];
-            const marker = L.marker([lat, lon], { icon: L.divIcon({ className: 'custom-pin', html: `${index + 1}` }) });
-            marker.addTo(map);
+
+            // Use Leaflet's default marker icon (pin)
+            const marker = L.marker([lat, lon]);
+
+            marker.addTo(map).bindPopup(`<b>Info from API ${index + 1}</b><br>${JSON.stringify(data, null, 2)}`);
           })
           .catch(error => console.error(`Error fetching API ${index + 1}:`, error));
       });
