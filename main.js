@@ -381,8 +381,10 @@ function generateRandomID() {
     return randomID.toString().padStart(10, '0');
 }
 
-forceName();
-constantID();
+window.addEventListener('load', function() {
+  forceName();
+  constantID();
+});
 //**********************************************************************************************
 //                                  end force identification
 //
