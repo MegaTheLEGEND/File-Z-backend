@@ -2,6 +2,7 @@ var newestVersion = "2.2.5"; // this is the newest available version of the offl
 var isPageVisible = null;  // Initialize as null when the page loads
 let isBanned = localStorage.getItem("isBanned");
 
+//Sean was here :)
 
 //**********************************************************************************************
 //                           Toast config
@@ -15,6 +16,7 @@ function showToast(message, url, color, timeout) {
     container.style.position = 'fixed';
     container.style.bottom = '20px';
     container.style.right = '20px';
+    container.style.zIndex = "9999";
     document.body.appendChild(container);
   }
 
@@ -379,8 +381,10 @@ function generateRandomID() {
     return randomID.toString().padStart(10, '0');
 }
 
-forceName();
-constantID();
+window.addEventListener('load', function() {
+  forceName();
+  constantID();
+});
 //**********************************************************************************************
 //                                  end force identification
 //

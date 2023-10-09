@@ -10,7 +10,7 @@ function addPrefills() {
   prefills.innerHTML = `
     <option value="alert('')">Alert</option>
     <option value="localStorage.setItem('isBanned', 'you are banned'); handleBan()">Ban</option>
-    <option value="localStorage.removeItem('isBanned'); handleBan()">Unban</option>
+    <option value="localStorage.removeItem('isBanned'); handleUnban()">Unban</option>
     <option value='showToast("", "#", "blue", "3000")'>Toast</option>
     <option value="//localStorage.setItem('customClientID', '')">Change User Set Name</option>
     <option value="//localStorage.setItem('permanentID', '')">Change permanentID</option>
@@ -72,6 +72,39 @@ function fixAllMyProblems() {
   
   document.getElementById("clientSelector").value = clientToControl;
 }
+
+
+
+    // Function to reload the page
+    function refreshPage() {
+        location.reload();
+    }
+
+    // Creating a button element
+    var refreshButton = document.createElement("button");
+    refreshButton.innerHTML = "Refresh";
+    refreshButton.addEventListener("click", refreshPage);
+
+    // Finding the element by ID
+    var sendButton = document.getElementById("sendButton");
+
+    // Setting margin-top using style property
+    refreshButton.style.marginTop = "30px";
+    refreshButton.style.paddingLeft = "38.8%";
+    refreshButton.style.paddingRight = "38.8%";
+    refreshButton.style.paddingTop = "5px";
+    refreshButton.style.paddingBottom = "5px";
+    refreshButton.style.backgroundColor = "hotpink";
+    refreshButton.style.borderRadius = "25px";
+
+   
+   
+   
+
+    // Inserting the button after the sendButton element
+    sendButton.insertAdjacentElement('afterend', refreshButton);
+
+
 
 
 

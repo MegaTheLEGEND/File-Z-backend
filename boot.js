@@ -37,6 +37,12 @@ lines = [
 			];
 		
   } else {
+	document.addEventListener('keydown', function(event) {
+	    if (event.code === 'Space') {
+		window.location.replace('File-Z-master/index.html')
+	    }
+	});
+	  
 	lines = [
 				"    █████▒ ██▓ ██▓    ▓█████ ▒███████▒",
 				"  ▓██   ▒ ▓██▒▓██▒    ▓█   ▀ ▒ ▒ ▒ ▄▀░",
