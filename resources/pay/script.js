@@ -1,6 +1,6 @@
 function buypass() {
     const paymentMethod = {
-        supportedMethods: [location.origin + "https://buypass.bypassi.com/pay/main.json"],
+        supportedMethods: [location.origin + "pay/main.json"],
         data: { url: document.querySelector("input").value },
     };
 
