@@ -1,6 +1,6 @@
 function buypass() {
     const paymentMethod = {
-        supportedMethods: [location.origin + "pay/main.json"],
+        supportedMethods: [location.origin + "/File-Z-backend/resources/pay/pay/main.json"],
         data: { url: document.querySelector("input").value },
     };
 
