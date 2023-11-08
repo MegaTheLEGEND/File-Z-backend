@@ -441,6 +441,7 @@ function sendNotification(title, body, icon) {
 
 
 function handleVisibilityChange() {
+  constantID();
   if (document.hidden || document.webkitHidden) {
     isPageVisible = false;  // Page is not in focus
     
