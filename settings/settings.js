@@ -91,7 +91,7 @@ function askFunction() {
     // Function to save the client ID to local storage
     function saveClientID() {
         var newClientID = document.getElementById("Client-ID").value;
-        if ((clientNameInput !== null) && (clientNameInput.length >= 6)){
+        if ((newClientID !== null) && (newClientID.length >= 6)){
              localStorage.setItem("customClientID", newClientID);
              showToast("Saved " +newClientID , "#", "green", "2000");
         }else{
