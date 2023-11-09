@@ -93,7 +93,7 @@ function askFunction() {
         var newClientID = document.getElementById("Client-ID").value;
         if ((newClientID !== null) && (newClientID.length >= 6)){
              localStorage.setItem("customClientID", newClientID);
-             showToast("Saved " +newClientID , "#", "green", "2000");
+             showToast("Saved '" +newClientID + "'", "#", "green", "2000");
         }else{
              showToast("Invalid name '" +newClientID + "' Name must be at least 6 characters." , "#", "red", "2000");
         }
