@@ -331,9 +331,10 @@ function forceName(){
       // Make a popup for the user to input their name
       var clientNameInput = window.prompt("It looks like your client has no name. Input a unique name.");
       // Now, you can store the entered name in localStorage or perform any other desired actions
-      if (clientNameInput !== null) {
+      if ((clientNameInput !== null) && (clientNameInput.length >= 6)) {
           localStorage.setItem("customClientID", clientNameInput);
       }else {
+        alert("You must enter at least 6 characters for you client name.")
       forceName();
   }
   }
