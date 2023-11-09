@@ -95,7 +95,7 @@ function askFunction() {
              localStorage.setItem("customClientID", newClientID);
              showToast("Saved '" +newClientID + "'", "#", "green", "2000");
         }else{
-             showToast("Invalid name '" +newClientID + "' Name must be at least 6 characters." , "#", "red", "2000");
+             showToast("Invalid name '" +newClientID + "'. Name must be at least 6 characters." , "#", "red", "2000");
         }
 }
 
