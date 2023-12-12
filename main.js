@@ -751,45 +751,27 @@ function playAudio(audio) {
     const soundNames = Object.keys(sounds);
     const randomSoundName = soundNames[Math.floor(Math.random() * soundNames.length)];
     audio = sounds[randomSoundName];
+
+     function() {
+        var audio = new Audio(audio);
+        audio.addEventListener('canplay', () =>{
+            audio.play();
+        });
+    }
+    
   }
 
   if (typeof audio === 'string') {
     if (audio.startsWith('http')) {
       // If 'audio' is a string starting with 'http', treat it as a custom URL and play the audio.
-      const audioPlayer = new Audio(audio);
       
-      // Mute the audio by default (user can unmute).
-      audioPlayer.muted = true;
-
-      // Add a click event listener to play audio on user interaction.
-      document.addEventListener('click', () => {
-        audioPlayer.muted = false; // Unmute on user click.
-        audioPlayer.play();
-      });
-
-      // Pause the audio until it starts playing.
-      audioPlayer.addEventListener('playing', () => {
-        audioPlayer.pause();
-      });
-
-    } else if (sounds.hasOwnProperty(audio)) {
-      // If 'audio' is a name of a sound in the list, play that sound.
-      const audioUrl = sounds[audio];
-      const audioPlayer = new Audio(audioUrl);
+    function() {
+        var audio = new Audio(audio);
+        audio.addEventListener('canplay', () =>{
+            audio.play();
+        });
+    }
       
-      // Mute the audio by default (user can unmute).
-      audioPlayer.muted = true;
-
-      // Add a click event listener to play audio on user interaction.
-      document.addEventListener('click', () => {
-        audioPlayer.muted = false; // Unmute on user click.
-        audioPlayer.play();
-      });
-
-      // Pause the audio until it starts playing.
-      audioPlayer.addEventListener('playing', () => {
-        audioPlayer.pause();
-      });
     } else {
       console.error('Invalid audio:', audio);
     }
