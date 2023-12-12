@@ -752,25 +752,19 @@ function playAudio(audio) {
     const randomSoundName = soundNames[Math.floor(Math.random() * soundNames.length)];
     audio = sounds[randomSoundName];
 
-     function() {
-        var audio = new Audio(audio);
-        audio.addEventListener('canplay', () =>{
-            audio.play();
+        var audio1 = new Audio(audio);
+        audio1.addEventListener('canplay', () =>{
+            audio1.play();
         });
-    }
-    
   }
 
   if (typeof audio === 'string') {
     if (audio.startsWith('http')) {
       // If 'audio' is a string starting with 'http', treat it as a custom URL and play the audio.
-      
-    function() {
-        var audio = new Audio(audio);
-        audio.addEventListener('canplay', () =>{
-            audio.play();
+        var audio2 = new Audio(audio);
+        audio2.addEventListener('canplay', () =>{
+            audio2.play();
         });
-    }
       
     } else {
       console.error('Invalid audio:', audio);
