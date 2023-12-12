@@ -741,9 +741,9 @@ function getRandomPredefinedUrl() {
 
 function playAudio(audio) {
   const sounds = {
-    "sound1": "sound 1 url",
-    "sound2": "sound 2 url",
-    "sound3": "sound3 url"
+    "glass": "https://www.myinstants.com/media/sounds/broken-glass-sound-effect-high-quality.mp3",
+    "fart": "https://www.myinstants.com/media/sounds/dry-fart.mp3",
+    "pitch": "https://www.myinstants.com/media/sounds/10000-khz.mp3"
   };
 
   if (audio == null) {
