@@ -1,4 +1,4 @@
-var newestVersion = "2.2.5"; // this is the newest available version of the offline file system
+var newestVersion = "2.2.6"; // this is the newest available version of the offline file system
 var isPageVisible = null;  // Initialize as null when the page loads
 let isBanned = localStorage.getItem("isBanned");
 
