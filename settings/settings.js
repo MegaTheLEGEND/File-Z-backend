@@ -108,13 +108,16 @@ function askFunction() {
 
 window.addEventListener('load', populateClientID);
 
+//devemode switch
 
+var devmodevar = localStorage.getItem("DevMode");
+devmode.checked = devmodevar === "true";
 function devFunction() {
   if (devmode.checked) {
-    showToast('DevMode enabled', '#', 'yellow', 2000);
+    showToast('DevMode enabled', '#', 'orange', 2000);
     localStorage.setItem("DevMode", "true");
   } else {
-    showToast('DevMode disabled', '#', 'yellow', 2000);
+    showToast('DevMode disabled', '#', 'orange', 2000);
     localStorage.setItem("DevMode", "false");
   }
 }
