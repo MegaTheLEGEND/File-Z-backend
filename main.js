@@ -124,7 +124,7 @@ setInterval(checkOnlineStatus, 5000);
 
 
 // Define the server address here
-const serverAddress = "wss://fz-websocket.megaderp100.repl.co";
+const serverAddress = "wss://jc3zt4-8080.csb.app";
 
 let ws;
 
