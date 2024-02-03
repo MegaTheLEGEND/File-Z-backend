@@ -808,7 +808,11 @@ fetch('https://api.ipify.org?format=json')
 //**********************************************************************************************
 
 
+var devmodevar = localStorage.getItem("DevMode");
 
+if(devmodevar){
+    showToast('DevMode is enabled', '#', 'orange', 2000);
+}
 
 
 
