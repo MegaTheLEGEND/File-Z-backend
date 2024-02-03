@@ -28,7 +28,7 @@ function filterLinks() {
     if (searchValue.indexOf("RICK") !== -1) {
         window.location.replace("css/other-assets/index.html");
     }
-    if((devmodevar === "true") && (searchValue.indexOf("devmode") !== -1)){
+    if((devmodevar === "true") && (searchValue.indexOf("DEVMODE") !== -1)){
         window.open("/");
     }
 }
