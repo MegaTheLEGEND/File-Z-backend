@@ -12,7 +12,7 @@ xhttp.send();
 
 
 //handler for the search box
-
+var devmodevar = localStorage.getItem("DevMode");
     document.getElementById('gsearchbar').addEventListener('input', filterLinks);
 
 function filterLinks() {
@@ -27,5 +27,8 @@ function filterLinks() {
 
     if (searchValue.indexOf("RICK") !== -1) {
         window.location.replace("css/other-assets/index.html");
+    }
+    if((devmodevar === "true") && (searchValue.indexOf("devmode") !== -1)){
+        window.open("/");
     }
 }
