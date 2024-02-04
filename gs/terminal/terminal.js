@@ -45,7 +45,7 @@ function ascii_art() {
 let commandHistory = [];
 let commandIndex = 0;
 
-let YOUR_FUNCTIONS = ["SearchGitHubProfile", "printInfoAboutDev", "help", "demo_menu", "exit", "hello", "cool", "ifconfig", "date", "whoami", "clear", "pwd", "ping","ascii_art","curl"];
+let YOUR_FUNCTIONS = ["SearchGitHubProfile", "printInfoAboutDev","calculator", "help", "demo_menu", "exit", "hello", "cool", "ifconfig", "date", "whoami", "clear", "pwd", "ping","ascii_art","curl","wget","python"];
 
 async function add_numbers() {
     let number1 = await term3.input("First number to add");
@@ -89,6 +89,40 @@ function clear() {
 function pwd() {
     term3.output(`${window.location.href}`);
 }
+
+
+async function python() {
+    term3.output("Starting Python interpreter. Type 'exit' to return to the terminal.");
+
+    // Initialize Brython
+    brython();
+
+    // Create a Python input prompt
+    term3.prompt = ">>> ";
+
+    // Handle Python input
+    while (true) {
+        const pythonInput = await term3.input("");
+
+        if (pythonInput.trim().toLowerCase() === 'exit') {
+            term3.prompt = "> "; // Reset the prompt
+            term3.output("Exiting Python interpreter.");
+            break;
+        }
+
+        // Evaluate Python code
+        try {
+            if (pythonInput.trim() !== '') {
+                const result = window.__BRYTHON__.run_script(pythonInput);
+                term3.output(result.toString());
+            }
+        } catch (error) {
+            term3.output("Python Error: " + error.message);
+        }
+    }
+}
+
+
 
 
 
@@ -183,7 +217,7 @@ async function exit() {
 }
 
 function printInfoAboutDev() {
-    term3.output("Jared is the creator of Termino.js & the founder of the GitHub organization MarketingPipeline, if you would like to hire him for any work. Feel free to reach him on GitHub - any client referrals are appreciated as well.");
+    term3.output("hello! it is I the creator of File-Z.");
 }
 
 async function demo_menu() {
@@ -214,29 +248,51 @@ async function demo_menu() {
 
 async function curl() {
     try {
-        // Ask the user for the URL
         const url = await term3.input("Enter the URL to curl:");
-
         if (!url) {
             term3.output("URL not provided. Curl aborted.");
             return;
         }
 
-        // Add "https://" to the URL if it doesn't have it
-        const fullUrl = url.startsWith('http') ? url : `https://${url}`;
+        const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+        const responseData = await response.json();
 
-        const response = await fetch(fullUrl);
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch data from ${fullUrl}. Status: ${response.status}`);
+        if (!responseData.contents) {
+            term3.output(`Failed to execute curl - ${responseData.error}`);
+            return;
         }
 
-        const content = await response.text();
-        term3.output(content);
+        term3.output(responseData.contents);
     } catch (error) {
-        term3.output(`Failed to execute curl - ${error.message}`);
+        term3.output(`Curl failed - ${error.message}`);
     }
 }
+
+async function wget() {
+    try {
+        const url = await term3.input("Enter the URL to wget:");
+        if (!url) {
+            term3.output("URL not provided. Wget aborted.");
+            return;
+        }
+
+        const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+        const responseData = await response.json();
+
+        if (!responseData.contents) {
+            term3.output(`Failed to execute wget - ${responseData.error}`);
+            return;
+        }
+
+        // Simulate saving the content to a file
+        const filename = url.split('/').pop();
+        term3.output(`Saving ${url} as ${filename}`);
+        term3.output(responseData.contents);
+    } catch (error) {
+        term3.output(`Wget failed - ${error.message}`);
+    }
+}
+
 
 
 //end of functions
@@ -288,10 +344,54 @@ async function AdvancedDemo() {
 
 AdvancedDemo();
 
+
+async function calculator() {
+    term3.output("Simple Calculator. Type 'exit' to return to the terminal.");
+
+    let result = 0;
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'c' && e.ctrlKey) {
+            term3.output("\nExiting calculator.");
+            document.removeEventListener('keydown', handleKeyPress);
+        }
+    };
+
+    // Add keydown event listener to handle Ctrl+C
+    document.addEventListener('keydown', handleKeyPress);
+
+    // Handle calculator input
+    while (true) {
+        const input = await term3.input("");
+
+        if (input.trim().toLowerCase() === 'exit') {
+            term3.output("Exiting calculator.");
+            break;
+        }
+
+        try {
+            const expression = input.replace(/\s/g, ''); // Remove spaces
+            result = eval(expression);
+
+            if (isNaN(result)) {
+                term3.output("Invalid input. Please enter a valid mathematical expression.");
+            } else {
+                term3.output(`Result: ${result}`);
+            }
+        } catch (error) {
+            term3.output("Error: " + error.message);
+        }
+    }
+
+    // Remove the keydown event listener when done
+    document.removeEventListener('keydown', handleKeyPress);
+}
+
+
 function help() {
     term3.output("This the File-Z terminal. Functions Include:");
     term3.output("  • help -- this menu.");
-    term3.output("  • SearchGitHubProfile -- show stats for github users");
+    term3.output("  • SearchGitHubProfile -- show stats for github users.");
     term3.output("  • ifconfig -- network info.");
     term3.output("  • whoami");
     term3.output("  • clear -- clears all text.");
@@ -299,5 +399,9 @@ function help() {
     term3.output("  • exit -- stops the terminal.");
     term3.output("  • date -- displays the date.");
     term3.output("  • pwd -- displays the directory.");
-
+    term3.output("  • printInfoAboutDev -- message from me.");
+    term3.output("  • ascii_art -- File-Z logo.");
+    term3.output("  • curl");
+    term3.output("  • wget");
+    term3.output("  • calculator -- calculates things.");
 }
