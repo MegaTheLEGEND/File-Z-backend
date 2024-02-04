@@ -45,7 +45,7 @@ function ascii_art() {
 let commandHistory = [];
 let commandIndex = 0;
 
-let YOUR_FUNCTIONS = ["SearchGitHubProfile", "printInfoAboutDev", "help", "demo_menu", "exit", "hello", "cool", "ifconfig", "date", "whoami", "clear", "pwd", "ping","hackertyper"];
+let YOUR_FUNCTIONS = ["SearchGitHubProfile", "printInfoAboutDev", "help", "demo_menu", "exit", "hello", "cool", "ifconfig", "date", "whoami", "clear", "pwd", "ping","ascii_art"];
 
 async function add_numbers() {
     let number1 = await term3.input("First number to add");
@@ -267,8 +267,10 @@ function help() {
     term3.output("  • SearchGitHubProfile -- show stats for github users");
     term3.output("  • ifconfig -- network info.");
     term3.output("  • whoami");
-    term3.output("  • clear -- clear all text.");
-    term3.output("  • ping -- ping a site.");
-    term3.output("  • exit -- stop the terminal.");
+    term3.output("  • clear -- clears all text.");
+    term3.output("  • ping -- pings a site.");
+    term3.output("  • exit -- stops the terminal.");
+    term3.output("  • date -- displays the date.");
+    term3.output("  • pwd -- displays the directory.");
 
 }
