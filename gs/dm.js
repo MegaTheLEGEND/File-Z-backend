@@ -19,8 +19,8 @@ items.forEach(function (item) {
   a.href = item.link;
 
   // Apply styles to the anchor element
-  a.style.color = 'white';
-  a.style.fontSize = '1.2em'; // You can adjust the font size as needed
+  li.style.color = 'red';
+  li.style.fontSize = '1.2em'; // You can adjust the font size as needed
 
   // Append the anchor element to the list item
   li.appendChild(a);
