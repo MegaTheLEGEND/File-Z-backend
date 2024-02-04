@@ -45,7 +45,7 @@ function ascii_art() {
 let commandHistory = [];
 let commandIndex = 0;
 
-let YOUR_FUNCTIONS = ["SearchGitHubProfile", "printInfoAboutDev", "help", "demo_menu", "exit", "hello", "cool", "ifconfig", "date", "whoami", "clear", "pwd", "ping","ascii_art"];
+let YOUR_FUNCTIONS = ["SearchGitHubProfile", "printInfoAboutDev", "help", "demo_menu", "exit", "hello", "cool", "ifconfig", "date", "whoami", "clear", "pwd", "ping","ascii_art","curl"];
 
 async function add_numbers() {
     let number1 = await term3.input("First number to add");
@@ -211,6 +211,33 @@ async function demo_menu() {
         term3.output("Invalid choice");
     }
 }
+
+async function curl() {
+    try {
+        // Ask the user for the URL
+        const url = await term3.input("Enter the URL to curl:");
+
+        if (!url) {
+            term3.output("URL not provided. Curl aborted.");
+            return;
+        }
+
+        // Add "https://" to the URL if it doesn't have it
+        const fullUrl = url.startsWith('http') ? url : `https://${url}`;
+
+        const response = await fetch(fullUrl);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data from ${fullUrl}. Status: ${response.status}`);
+        }
+
+        const content = await response.text();
+        term3.output(content);
+    } catch (error) {
+        term3.output(`Failed to execute curl - ${error.message}`);
+    }
+}
+
 
 //end of functions
 
