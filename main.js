@@ -828,17 +828,36 @@ if(devmodevar === "true"){
 //                                    The fzterm
 //**********************************************************************************************
 
+var terminalVisible = false; // Flag to track if the terminal is visible
+var termDiv; // Variable to store the overlay div
+
 function spawnTerminal() {
-        var overlayDiv = document.createElement("div");
-        overlayDiv.id = "banned"
+    if (terminalVisible) {
+        // If it is visible, remove the overlay div and unload the iframe
+        if (termDiv) {
+            var iframe = termDiv.querySelector("iframe");
+            // Unload the iframe by setting its src to an empty string
+            iframe.src = "";
+            
+            // Remove the iframe from the overlay div
+            termDiv.removeChild(iframe);
+
+            // Remove the overlay div from the document
+            document.body.removeChild(termDiv);
+            terminalVisible = false;
+        }
+    } else {
+        // If it is not visible, create the overlay div and iframe
+        termDiv = document.createElement("div");
+        termDiv.id = "banned";
         // Set styles for the overlay div to cover the entire page
-        overlayDiv.style.position = "fixed";
-        overlayDiv.style.top = "0";
-        overlayDiv.style.left = "0";
-        overlayDiv.style.width = "100%";
-        overlayDiv.style.height = "100%";
-        overlayDiv.style.zIndex = "9999";
-        overlayDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+        termDiv.style.position = "fixed";
+        termDiv.style.top = "0";
+        termDiv.style.left = "0";
+        termDiv.style.width = "100%";
+        termDiv.style.height = "100%";
+        termDiv.style.zIndex = "9999";
+        termDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
         
         // Create an iframe element
         var iframe = document.createElement("iframe");
@@ -850,22 +869,23 @@ function spawnTerminal() {
         iframe.src = "terminal.html";
         
         // Add the iframe to the overlay div
-        overlayDiv.appendChild(iframe);
+        termDiv.appendChild(iframe);
         
         // Append the div to the body of the document
-        document.body.appendChild(overlayDiv);
+        document.body.appendChild(termDiv);
         
-        // Append the div to the body of the document
-        document.body.appendChild(overlayDiv);
-        }
+        // Update the flag to indicate that the terminal is now visible
+        terminalVisible = true;
+    }
+}
 
+document.addEventListener('keydown', function(event) {
+    // Check if Shift key and tilde key are pressed
+    if (event.shiftKey && event.key === '~') {
+        spawnTerminal();
+    }
+});
 
-      document.addEventListener('keydown', function(event) {
-        // Check if Shift key and backtick key are pressed
-        if (event.shiftKey && event.key === '~') {
-          spawnTerminal();
-        }
-      });
   
 //**********************************************************************************************
 //                                  END The fzterm
