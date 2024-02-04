@@ -868,6 +868,7 @@ function spawnTerminal() {
         closeButton.style.right = "10px";
         closeButton.style.padding = "5px";
         closeButton.style.cursor = "pointer";
+        closeButton.style.borderColor = "red";
         closeButton.addEventListener('click', function() {
             spawnTerminal(); // Close the terminal
         });
@@ -876,10 +877,9 @@ function spawnTerminal() {
         var iframe = document.createElement("iframe");
         
         // Set styles for the iframe to fill the overlay div
-        iframe.style.width = "80%"; // Adjust the width as needed
-        iframe.style.height = "80%"; // Adjust the height as needed
-        iframe.style.border = "2px solid #fff"; // Set border style
-        iframe.style.margin = "10% auto"; // Center the iframe with some margin
+        iframe.style.width = "90vw"; // Adjust the width as needed
+        iframe.style.height = "90vh"; // Adjust the height as needed
+        iframe.style.margin = "auto"; // Center the iframe with some margin
         iframe.style.boxSizing = "border-box"; // Include border in sizing
         iframe.src = "terminal.html";
         
