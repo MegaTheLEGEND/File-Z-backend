@@ -29,19 +29,16 @@ async function SearchGitHubProfile() {
 
 function ascii_art() {
     term3.output(`
-        ⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣤⣶⣶⣶⣶⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀
-        ⠀⠀⠀⢀⣤⣾⣿⣿⠿⠟⠛⠛⠛⠛⠻⠿⣿⣿⣷⣤⡀⠀⠀⠀⠀
-        ⠀⠀⣴⣿⣿⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⣿⣿⣦⠀⠀⠀
-        ⢀⣾⣿⡿⠁⠀⠀⣴⣦⣄⠀⠀⠀⠀⠀⣀⣤⣶⡀⠈⢿⣿⣷⡀⠀
-        ⣾⣿⡟⠁⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠈⣿⣿⡄
-        ⢠⣿⣿⠁⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⣿⣿⡇
-        ⢸⣿⣿⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⣿⣿⡇
-        ⠘⣿⣿⡦⠤⠒⠒⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠧⠤⢴⣿⣿⠃
-        ⠀⢿⣿⣧⡀⠀⢤⡀⠙⠻⠿⣿⣿⣿⣿⣿⠟⠋⠁⠀⢀⣼⣿⡿⠀
-        ⠀⠈⢿⣿⣷⡀⠈⢿⣦⣤⣾⣿⣿⣿⣿⣷⣄⠀⠀⢀⣾⣿⡿⠁
-        ⠀⠀⠀⠻⣿⣿⣦⣄⡉⣿⣿⢿⣿⠉⢻⣿⢿⣿⣠⣴⣿⣿⠟⠀⠀
-        ⠀⠀⠀⠀⠀⠈⠛⢿⣿⣿⣿⣧⣼⣿⣤⣾⣷⣶⣿⣿⡿⠛⠁⠀⠀⠀
-        ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠿⠿⠿⠿⠿⠛⠛⠋⠁⠀⠀⠀⠀
+    █████▒ ██▓ ██▓    ▓█████ ▒███████▒
+  ▓██   ▒ ▓██▒▓██▒    ▓█   ▀ ▒ ▒ ▒ ▄▀░
+  ▒████ ░ ▒██▒▒██░    ▒███   ░ ▒ ▄▀▒░
+  ░▓█▒  ░ ░██░▒██░    ▒▓█  ▄   ▄▀▒   ░
+  ░▒█░    ░██░░██████▒░▒████▒▒███████▒
+   ▒ ░    ░▓  ░ ▒░▓  ░░░ ▒░ ░░▒▒ ▓░▒░▒
+   ░       ▒ ░░ ░ ▒  ░ ░ ░  ░░░▒ ▒ ░ ▒
+   ░ ░     ▒ ░  ░ ░      ░   ░ ░ ░ ░ ░
+           ░      ░  ░   ░  ░  ░ ░    
+                             ░        ⠀⠀⠀
     `);
 }
 
@@ -92,30 +89,6 @@ function clear() {
 function pwd() {
     term3.output(`${window.location.href}`);
 }
-
-async function hackertyper() {
-    try {
-        const response = await fetch("https://www.o-bible.com/download/kjv.txt");
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch hacker typer text. Status: ${response.status}`);
-        }
-
-        const hackerText = await response.text();
-
-        const lines = hackerText.split('\n');
-
-        for (const line of lines) {
-            term3.output(line);
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the delay as needed
-        }
-
-        term3.output("Hacking complete!");
-    } catch (error) {
-        term3.output(`Failed to load hacker typer text: ${error.message}`);
-    }
-}
-
 
 
 
