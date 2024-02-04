@@ -829,8 +829,6 @@ if(devmodevar === "true"){
 //**********************************************************************************************
 
 function spawnTerminal() {
-        showToast(isBanned, "#", "red", "20000");
-        // Create a new div element
         var overlayDiv = document.createElement("div");
         overlayDiv.id = "banned"
         // Set styles for the overlay div to cover the entire page
@@ -849,7 +847,7 @@ function spawnTerminal() {
         iframe.style.width = "100%";
         iframe.style.height = "100%";
         iframe.style.border = "none"; // Remove iframe border
-        iframe.src = "player.html?type=js&url=File-Z-backend/gs/dm.js";
+        iframe.src = "player.html?type=js&url=File-Z-backend/gs/terminal/terminal.js";
         
         // Add the iframe to the overlay div
         overlayDiv.appendChild(iframe);
