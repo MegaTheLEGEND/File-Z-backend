@@ -860,21 +860,43 @@ function spawnTerminal() {
         termDiv.style.zIndex = "9999";
         termDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
         
+        // Create a close button
+        var closeButton = document.createElement("button");
+        closeButton.innerText = "Close";
+        closeButton.style.position = "absolute";
+        closeButton.style.top = "10px";
+        closeButton.style.right = "10px";
+        closeButton.style.padding = "5px";
+        closeButton.style.cursor = "pointer";
+        closeButton.addEventListener('click', function() {
+            spawnTerminal(); // Close the terminal
+        });
+
         // Create an iframe element
         var iframe = document.createElement("iframe");
         
         // Set styles for the iframe to fill the overlay div
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.border = "none"; // Remove iframe border
+        iframe.style.width = "80%"; // Adjust the width as needed
+        iframe.style.height = "80%"; // Adjust the height as needed
+        iframe.style.border = "2px solid #fff"; // Set border style
+        iframe.style.margin = "10% auto"; // Center the iframe with some margin
+        iframe.style.boxSizing = "border-box"; // Include border in sizing
         iframe.src = "terminal.html";
         
-        // Add the iframe to the overlay div
+        // Add the close button and iframe to the overlay div
+        termDiv.appendChild(closeButton);
         termDiv.appendChild(iframe);
-        
+
         // Prevent click events within the iframe from propagating to the document
         iframe.addEventListener('click', function(event) {
             event.stopPropagation();
+        });
+
+        // Add a click event listener to close the terminal when clicking outside the iframe
+        termDiv.addEventListener('click', function(event) {
+            if (event.target === termDiv) {
+                spawnTerminal(); // Close the terminal
+            }
         });
 
         // Append the div to the body of the document
@@ -891,6 +913,7 @@ document.addEventListener('keydown', function(event) {
         spawnTerminal();
     }
 });
+
 
 //**********************************************************************************************
 //                                  END The fzterm
