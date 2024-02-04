@@ -9,7 +9,7 @@ var items = [
 // Create a new unordered list element
 var ul = document.createElement('ul');
 
-// Loop through the items and create list elements with links
+// Loop through the items and create list elements with styled links
 items.forEach(function (item) {
   var li = document.createElement('li'); // Create a new list item
   var a = document.createElement('a'); // Create a new anchor element
@@ -18,12 +18,20 @@ items.forEach(function (item) {
   a.textContent = item.text;
   a.href = item.link;
 
+  // Apply styles to the anchor element
+  a.style.color = 'white';
+  a.style.fontSize = '1.2em'; // You can adjust the font size as needed
+
   // Append the anchor element to the list item
   li.appendChild(a);
 
   // Append the list item to the unordered list
   ul.appendChild(li);
 });
+
+// Apply styles to the unordered list
+ul.style.listStyle = 'none'; // Remove default list styles
+ul.style.padding = '0'; // Remove default padding
 
 // Append the unordered list to the body of the document
 document.body.appendChild(ul);
