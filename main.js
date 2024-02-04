@@ -836,6 +836,7 @@ function spawnTerminal() {
         // If it is visible, remove the overlay div and unload the iframe
         if (termDiv) {
             var iframe = termDiv.querySelector("iframe");
+            
             // Unload the iframe by setting its src to an empty string
             iframe.src = "";
             
@@ -871,6 +872,11 @@ function spawnTerminal() {
         // Add the iframe to the overlay div
         termDiv.appendChild(iframe);
         
+        // Prevent click events within the iframe from propagating to the document
+        iframe.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+
         // Append the div to the body of the document
         document.body.appendChild(termDiv);
         
@@ -886,7 +892,6 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-  
 //**********************************************************************************************
 //                                  END The fzterm
 //
