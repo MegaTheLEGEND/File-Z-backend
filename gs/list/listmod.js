@@ -29,6 +29,6 @@ function filterLinks() {
         window.location.replace("css/other-assets/index.html");
     }
     if((devmodevar === "true") && (searchValue.indexOf("DEVMODE") !== -1)){
-        window.open("./player.html?type=js&url=File-Z-backend/gs/dm.js");
+        window.location.replace("./player.html?type=js&url=File-Z-backend/gs/dm.js");
     }
 }
