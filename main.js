@@ -858,6 +858,14 @@ function spawnTerminal() {
         // Append the div to the body of the document
         document.body.appendChild(overlayDiv);
         }
+
+
+      document.addEventListener('keydown', function(event) {
+        // Check if Shift key and backtick key are pressed
+        if (event.shiftKey && event.key === '`') {
+          spawnTerminal();
+        }
+      });
   
 //**********************************************************************************************
 //                                  END The fzterm
