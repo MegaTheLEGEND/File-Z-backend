@@ -847,7 +847,7 @@ function spawnTerminal() {
         iframe.style.width = "100%";
         iframe.style.height = "100%";
         iframe.style.border = "none"; // Remove iframe border
-        iframe.src = "player.html?url=File-Z-backend/gs/terminal/terminal.html";
+        iframe.src = "terminal.html";
         
         // Add the iframe to the overlay div
         overlayDiv.appendChild(iframe);
