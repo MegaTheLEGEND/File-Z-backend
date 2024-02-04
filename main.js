@@ -862,7 +862,7 @@ function spawnTerminal() {
 
       document.addEventListener('keydown', function(event) {
         // Check if Shift key and backtick key are pressed
-        if (event.shiftKey && event.key === '`') {
+        if (event.shiftKey && event.key === '~') {
           spawnTerminal();
         }
       });
