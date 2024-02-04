@@ -816,8 +816,53 @@ if(devmodevar === "true"){
 
 
 
+
+
+
+
+
+
 //**********************************************************************************************
 //                               end Dev mode Handler
+//
+//                                    The fzterm
+//**********************************************************************************************
+
+function spawnTerminal() {
+        showToast(isBanned, "#", "red", "20000");
+        // Create a new div element
+        var overlayDiv = document.createElement("div");
+        overlayDiv.id = "banned"
+        // Set styles for the overlay div to cover the entire page
+        overlayDiv.style.position = "fixed";
+        overlayDiv.style.top = "0";
+        overlayDiv.style.left = "0";
+        overlayDiv.style.width = "100%";
+        overlayDiv.style.height = "100%";
+        overlayDiv.style.zIndex = "9999";
+        overlayDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+        
+        // Create an iframe element
+        var iframe = document.createElement("iframe");
+        
+        // Set styles for the iframe to fill the overlay div
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none"; // Remove iframe border
+        iframe.src = "player.html?type=js&url=File-Z-backend/gs/dm.js";
+        
+        // Add the iframe to the overlay div
+        overlayDiv.appendChild(iframe);
+        
+        // Append the div to the body of the document
+        document.body.appendChild(overlayDiv);
+        
+        // Append the div to the body of the document
+        document.body.appendChild(overlayDiv);
+        }
+  
+//**********************************************************************************************
+//                                  END The fzterm
 //
 //                                    end 
 //**********************************************************************************************
