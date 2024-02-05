@@ -16,3 +16,7 @@ element.style.width = '75%';
 var container = document.getElementById('stuff');
 container.appendChild(element);
 
+
+
+
+adjustWelcomeText("Welcome to File-Z.");
