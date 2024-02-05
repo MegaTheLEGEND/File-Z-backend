@@ -850,7 +850,7 @@ function spawnTerminal() {
     } else {
         // If it is not visible, create the overlay div and iframe
         termDiv = document.createElement("div");
-        termDiv.id = "banned";
+        termDiv.id = "terminal";
         // Set styles for the overlay div to cover the entire page
         termDiv.style.position = "fixed";
         termDiv.style.top = "0";
